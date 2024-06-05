@@ -34,3 +34,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+## ディレクトリ構成
+- src/:
+  - components/: 再利用可能なReactコンポーネントを格納します。
+    - common/: アプリ全体で使用される共通コンポーネント。
+    - snippets/: デザインスニペットに関連するコンポーネント。
+  - styles/: CSSファイルやモジュールを格納します。
+    - globals.css: グローバルスタイルを定義。
+    - snippets.module.css: 特定のコンポーネントに関連するスタイル。
+  - utils/: ユーティリティ関数を格納します。
+    - fetcher.ts: APIリクエストを行うための汎用関数。
+  - hooks/: カスタムフックを格納します。
+    - useSnippets.ts: デザインスニペットを取得するためのカスタムフック。
+  - types/: TypeScriptの型定義を格納します。
+    - snippet.ts: スニペットの型定義。
+- app/: Next.jsのルーティングを構成するページコンポーネント。
+- public/: 画像などおくところ
+
