@@ -1,6 +1,7 @@
-type TagProps = {
+interface TagProps {
   id: number,
+  slug: string,
   name: string
 };
 
-type TagsProps = Array<TagProps>;
+type TagsProps = TagProps[];

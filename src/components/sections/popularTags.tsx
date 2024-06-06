@@ -6,34 +6,16 @@ import Title from "../common/title";
 import Button from "../common/button";
 import Link from 'next/link';
 
-const PopularTags = () => {
-  const tags = [
-    {
-      id: 0,
-      name: "WEBsaito",
-    },
-    {
-      id: 1,
-      name: "aaa",
-    },
-    {
-      id: 2,
-      name: "aaa",
-    },
-    {
-      id: 3,
-      name: "aaa",
-    },
-    {
-      id: 4,
-      name: "aaa",
-    }
-  ];
+const PopularTags = ({
+  tags
+}: {
+  tags: TagsProps
+}) => {
   const list = tags.map((tag: TagProps) => (
     <li key={tag.id}>
       <Link href={`/tags/${tag.id}`}>
         <span>
-          {tag.name}
+          #{tag.name}
         </span>
       </Link>
     </li>
