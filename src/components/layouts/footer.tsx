@@ -33,9 +33,9 @@ const Footer = () => (
             <ImgUga />
           </div>
 
-          <div>
+          <div className={styles.contents}>
             <h2 className={`${styles.name} ${montserrat.className}`}>UGA</h2>
-            <p>Webデザイナー兼フロントエンドエンジニア<br />こんなのあったら便利なのになあを詰め込んだ完全に趣味で作ったサイトです。</p>
+            <p className={styles.text}>Webデザイナー兼フロントエンドエンジニア<br />こんなのあったら便利なのになあを詰め込んだ完全に趣味で作ったサイトです。<br />勉強がてらNext.js/Strapiで作ったよ。</p>
             <ul className={styles.links}>
               <li>
                 <a href="" className={`${styles.btn} bg-orange`}>WEBSITE</a>

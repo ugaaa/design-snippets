@@ -31,7 +31,12 @@ const Logo = <T extends React.ElementType = 'div'>({
   ...rest
 }: LogoProps<T>) => {
   const Component = href ? 'a' : (as || 'div');
-  const classNames = `${montserrat.className} ${styles.logo} ${isWhite ? 'text-white' : 'text-yellow'} ${as === 'h1' ? styles.isLarge : ''}`;
+  const classNames = [
+    montserrat.className,
+    styles.logo,
+    isWhite ? 'text-white' : 'text-yellow',
+    Component === 'h1' && styles.isLarge,
+  ].filter(Boolean).join(' ');
 
   return (
     <Component {...rest} className={classNames} href={href}>

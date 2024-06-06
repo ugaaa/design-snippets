@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const debounce = (func: Function, wait: number) => {
   let timeout: NodeJS.Timeout;
@@ -8,14 +8,26 @@ const debounce = (func: Function, wait: number) => {
   };
 };
 
-export const useResize = (onResize: () => void, debounceTime: number = 100) => {
+export const useResize = (onResize?: () => void, debounceTime: number = 100) => {
+  const [isPC, setIsPC] = useState<boolean>(true);
+
+  const handleResize = useCallback(() => {
+    const windowWidth = window.innerWidth;
+    setIsPC(windowWidth >= 780); // Assuming 780px is the breakpoint between PC and SP
+    if (onResize) {
+      onResize();
+    }
+  }, [onResize]);
+
   useEffect(() => {
-    const debouncedResize = debounce(onResize, debounceTime);
+    const debouncedResize = debounce(handleResize, debounceTime);
     window.addEventListener('resize', debouncedResize);
-    onResize(); // 初回のリサイズ
+    handleResize(); // Initial check
 
     return () => {
       window.removeEventListener('resize', debouncedResize);
     };
-  }, [onResize, debounceTime]);
+  }, [handleResize, debounceTime]);
+
+  return { isPC, isSP: !isPC };
 };

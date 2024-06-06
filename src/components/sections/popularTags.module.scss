@@ -1,0 +1,58 @@
+@import '@/styles/variables';
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px;
+  margin: 0;
+  list-style: none;
+  @media screen and (min-width: ($BREAK_POINT * 1px)) {
+    gap: 60px;
+  }
+  li {
+    width: 100%;
+    @media screen and (min-width: ($BREAK_POINT * 1px)) {
+      width: calc(100% / 3 - 40px);
+    }
+  }
+  a {
+    position: relative;
+    color: #fff;
+    display: block;
+    text-align: center;
+    border-radius: var(--border-radius);
+    background: var(--color-orange);
+    padding: 30px 10px;
+    font-size: 1.5rem;
+    overflow: hidden;
+    @media screen and (min-width: ($BREAK_POINT * 1px)) {
+      padding: 60px 20px;
+      font-size: 2rem;
+    }
+    span {
+      position: relative;
+    }
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75%;
+      aspect-ratio: 1/1;
+      background: var(--color-yellow);
+      border-radius: 50%;
+      content: "";
+      transition: all 1s;
+    }
+    @media (hover: hover) {
+      &:hover {
+        &::before {
+          width: 200%;
+          background: var(--color-green);
+          transition: all var(--hover-duration);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Montserrat, Anonymous_Pro } from 'next/font/google';
+import { Noto_Sans_JP } from 'next/font/google';
 import "../src/styles/globals.css";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJP.className}`}>
+      <body className={notoSansJP.className}>
         {children}
       </body>
     </html>

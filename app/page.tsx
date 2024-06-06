@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import styles from "./home.module.scss";
 import FirstView from "@/components/sections/firstView";
 import Footer from "@/components/layouts/footer";
+import About from "@/components/sections/about";
+import LatestArticles from "@/components/sections/latestArticles";
+import PopularArticles from "@/components/sections/popularArticles";
+import PopularTags from "@/components/sections/popularTags";
 
 interface Snippet {
   id: number;
@@ -49,6 +53,10 @@ export default function Home() {
   return (
     <main className={styles.home}>
       <FirstView />
+      <About />
+      <LatestArticles />
+      <PopularTags />
+      <PopularArticles />
       <Footer />
     </main>
   );

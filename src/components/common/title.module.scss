@@ -1,0 +1,40 @@
+@import '@/styles/mixin';
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  @include set_vw(font-size, 24, 48);
+  &.isWhite {
+    color: #fff;
+  }
+
+  .balls {
+    display: block;
+    position: relative;
+    @include set_vw(width, 95, 190);
+    @include set_vw(height, 85, 170);
+    @include set_vw(margin-right, -30, -60);
+    .ball {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+    }
+    .main {
+      top: 0;
+      right: 0;
+      @include set_vw(width, 70, 140);
+    }
+    .sub {
+      left: 0;
+      bottom: 0;
+      @include set_vw(width, 50, 100);
+    }
+  }
+
+  .text {
+    position: relative;
+  }
+}
