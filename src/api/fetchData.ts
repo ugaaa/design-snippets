@@ -3,13 +3,17 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 const logErrorToAPI = async (error: any) => {
-  await fetch('/api/logError', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ error: error.message }),
-  });
+  try {
+    await fetch('/api/logError', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ error: error.message }),
+    });
+  } catch (logError) {
+    console.error('Error logging the original error:', logError);
+  }
 };
 
 interface FetchOptions {
@@ -37,7 +41,7 @@ export const fetchData = async ({ endpoint, params }: FetchOptions) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error fetching snippets:', error);
+    console.error('Error fetching data:', error);
     await logErrorToAPI(error);
     throw error;
   }

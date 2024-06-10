@@ -1,86 +1,53 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import styles from "./home.module.scss";
 import FirstView from "@/components/sections/firstView";
 import Footer from "@/components/layouts/footer";
 import About from "@/components/sections/about";
 import LatestArticles from "@/components/sections/latestArticles";
-import PopularArticles from "@/components/sections/popularArticles";
 import PopularTags from "@/components/sections/popularTags";
 import { fetchData } from "@/api/fetchData";
 import { ArticleProps, ArticlesProps } from "@/types/articles";
+import { TagProps, TagsProps } from "@/types/tags";
 
-export default function Home() {
-  const [articles, setArticles] = useState<ArticlesProps>([]);
-  const [tags, setTags] = useState<TagsProps>([]);
+export default async function Home() {
+  let articles = [];
+  let tags = [];
 
-  useEffect(() => {
-    const loadSnippets = async () => {
-      try {
-        const data = await fetchData({
-          endpoint: 'snippets',
-          params: {
-            'pagination[pageSize]': 5
-          }
-        });
-        if (Array.isArray(data.data)) {
-          setArticles(data.data.map((item: {
-            id: number,
-            attributes: ArticleProps
-          }) => ({
-            id: item.id,
-            title: item.attributes.title,
-            content: item.attributes.content,
-            media: item.attributes.media,
-            publishedAt: item.attributes.publishedAt
-          })));
-        } else {
-          console.error('API response is not an array:', data);
-        }
-      } catch (error) {
-        console.error(`Error loading Snippets:`, error);
-      }
-    };
+  // サーバーコンポーネント内でデータを取得
+  try {
 
-    const loadTags = async () => {
-      try {
-        const data = await fetchData({
-          endpoint: 'tags',
-          params: {
-            'pagination[pageSize]': 6
-          }
-        });
-        if (Array.isArray(data.data)) {
+    const articlesData = await fetchData({
+      endpoint: 'snippets',
+      params: { 'pagination[pageSize]': 5 }
+    });
 
-          setTags(data.data.map((item: {
-            id: number,
-            attributes: TagProps
-          }) => ({
-            id: item.id,
-            slug: item.attributes.slug,
-            name: item.attributes.name
-          })));
-        } else {
-          console.error('API response is not an array:', data);
-        }
-      } catch (error) {
-        console.error(`Error loading Snippets:`, error);
-      }
-    };
+    const tagsData = await fetchData({
+      endpoint: 'tags',
+      params: { 'pagination[pageSize]': 6 }
+    });
 
-    loadSnippets();
-    loadTags();
+    articles = articlesData.data.map((item: { id: number, attributes: ArticleProps }) => ({
+      id: item.id,
+      title: item.attributes.title,
+      content: item.attributes.content,
+      media: item.attributes.media,
+      publishedAt: item.attributes.publishedAt
+    }));
 
-  }, []);
+    tags = tagsData.data.map((item: { id: number, attributes: TagProps }) => ({
+      id: item.id,
+      slug: item.attributes.slug,
+      name: item.attributes.name
+    }));
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
 
   return (
-    <main className={styles.home}>
+    <main>
       <FirstView />
       <About />
       <LatestArticles articles={articles} />
       <PopularTags tags={tags} />
-      {/* <PopularArticles /> */}
       <Footer />
     </main>
   );

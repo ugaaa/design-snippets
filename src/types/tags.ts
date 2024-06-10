@@ -1,7 +1,7 @@
-interface TagProps {
+export interface TagProps {
   id: number,
   slug: string,
   name: string
 };
 
-type TagsProps = TagProps[];
+export type TagsProps = TagProps[];

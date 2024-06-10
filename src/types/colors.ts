@@ -1,1 +1,1 @@
-type ColorProps = 'pink' | 'blue' | 'green' | 'yellow' | 'grange';
+export type ColorProps = 'pink' | 'blue' | 'green' | 'yellow' | 'grange';

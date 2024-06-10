@@ -75,6 +75,11 @@ a {
   }
 }
 
+.site-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .text-yellow { color: var(--color-yellow); }
 .text-pink { color: var(--color-pink); }
 .text-blue { color: var(--color-blue); }

@@ -1,5 +1,6 @@
 "use client";
 
+import { ArticlesProps } from "@/types/articles";
 import Button from "../common/button";
 import Title from "../common/title";
 import Articles from "../layouts/articles";
