@@ -26,8 +26,8 @@ export default HomePage;
   
 */
 
-import React, { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 interface InViewComponentProps {
   onInViewChange: (inView: boolean) => void;
