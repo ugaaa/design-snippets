@@ -1,0 +1,23 @@
+# Strapi用のDockerfile
+
+# 1. Base imageの設定
+FROM node:21-alpine
+
+# 2. 作業ディレクトリの設定
+WORKDIR /srv/app
+
+# 3. パッケージのインストール
+COPY cms/package.json cms/package-lock.json ./
+RUN npm install
+
+# 4. アプリケーションのソースコードをコピー
+COPY cms .
+
+# 5. 環境変数の設定
+ENV NODE_ENV=production
+
+# 6. ポートのエクスポート
+EXPOSE 1337
+
+# 7. アプリケーションの起動
+CMD ["npm", "start"]

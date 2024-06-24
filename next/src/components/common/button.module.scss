@@ -1,0 +1,43 @@
+@import "@/styles/variables";
+
+.button {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  padding: 20px 40px;
+  border-radius: 100vh;
+  background: var(--color-orange);
+  font-size: 1.1rem;
+  color: #fff;
+  overflow: hidden;
+  @media screen and (min-width: ($BREAK_POINT * 1px)) {
+    font-size: 1.25rem;
+  }
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translate(-50%, -50%);
+    background: var(--color-yellow);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    transition: all var(--hover-duration);
+    content: "";
+  }
+  span {
+    position: relative;
+  }
+  @media (hover: hover) {
+    &:hover {
+      color: #fff;
+      &::before {
+        width: 100vw;
+        height: 100vw;
+        background: var(--color-green);
+      }
+    }
+  }
+}
