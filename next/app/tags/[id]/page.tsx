@@ -1,15 +1,15 @@
 import Container from "@/components/layouts/container";
 import { fetchData } from "@/api/fetchData";
-import { ArticleProps, ArticlesProps } from "@/types/articles";
+import { PostProps } from "@/types/posts";
 import { TagProps } from "@/types/tags";
-import RichText from "@/components/layouts/richtext";
 import Title from "@/components/common/title";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
+import { Post } from "@/components/layouts/posts";
 
 export default async function TagPage({ params }: { params: { id: number } }) {
   let tag: TagProps | undefined;
-  let tagArticles: ArticlesProps = [];
+  let tagPosts: PostProps[] = [];
 
   try {
     // タグデータを取得
@@ -19,7 +19,7 @@ export default async function TagPage({ params }: { params: { id: number } }) {
     });
 
     // 記事データを取得
-    const articlesData = await fetchData({
+    const postsData = await fetchData({
       endpoint: "snippets",
       params: {
         "pagination[pageSize]": 5,
@@ -36,22 +36,10 @@ export default async function TagPage({ params }: { params: { id: number } }) {
     }
 
     // タグデータをセット
-    tag = {
-      id: tagData.data.id,
-      name: tagData.data.attributes.name,
-      slug: tagData.data.attributes.slug,
-    };
+    tag = tagData.data;
 
     // 記事データをセット
-    tagArticles = articlesData.data.map(
-      (item: { id: number; attributes: ArticleProps }) => ({
-        id: item.id,
-        title: item.attributes.title,
-        content: item.attributes.content,
-        media: item.attributes.media,
-        publishedAt: item.attributes.publishedAt,
-      })
-    );
+    tagPosts = postsData.data;
 
     // コンポーネントをレンダリング
     return (
@@ -60,16 +48,18 @@ export default async function TagPage({ params }: { params: { id: number } }) {
         <main>
           <Container ball={{ color: "pink", position: "right" }} hasTitle>
             <Title as="h1" ball={{ main: "green", sub: "yellow" }} isWhite>
-              {tag.name}
+              タグ: #{tag?.attributes.name}
             </Title>
             <div>
-              {tagArticles.map((article) => (
-                <div key={article.id}>
-                  <h2>{article.title}</h2>
-                  <RichText content={article.content} />
-                  {/* メディアや公開日など他の情報を必要に応じて追加 */}
-                </div>
-              ))}
+              {tagPosts.map((post) => {
+                return (
+                  <div key={post.id}>
+                    <h2>{post.attributes.title}</h2>
+                    <Post post={post} />
+                    {/* メディアや公開日など他の情報を必要に応じて追加 */}
+                  </div>
+                );
+              })}
             </div>
           </Container>
         </main>

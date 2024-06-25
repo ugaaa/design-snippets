@@ -1,7 +1,7 @@
 # Strapi用のDockerfile
 
 # 1. Base imageの設定
-FROM node:21-alpine
+FROM node:20-alpine
 
 # 2. 作業ディレクトリの設定
 WORKDIR /srv/app

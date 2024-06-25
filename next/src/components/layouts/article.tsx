@@ -4,11 +4,11 @@ import {
 } from "@strapi/blocks-react-renderer";
 import React from "react";
 
-interface RichTextProps {
+interface PostProps {
   content: BlocksContent;
 }
 
-const RichText: React.FC<RichTextProps> = ({ content }) => {
+const Article: React.FC<PostProps> = ({ content }) => {
   return (
     <article>
       <BlocksRenderer content={content} />;
@@ -16,4 +16,4 @@ const RichText: React.FC<RichTextProps> = ({ content }) => {
   );
 };
 
-export default RichText;
+export default Article;

@@ -1,7 +1,7 @@
 # Next.js用のDockerfile（Node.js 21ベース）
 
 # 1. Base imageの設定
-FROM node:21-alpine
+FROM node:20-alpine
 
 # 2. 作業ディレクトリの設定
 WORKDIR /app

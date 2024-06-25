@@ -11,7 +11,7 @@ const PopularTags = ({ tags }: { tags: TagProps[] }) => {
   const list = tags.map((tag: TagProps) => (
     <li key={tag.id}>
       <Link href={`/tags/${tag.id}`}>
-        <span>#{tag.name}</span>
+        <span>#{tag.attributes.name}</span>
       </Link>
     </li>
   ));

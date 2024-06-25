@@ -1,21 +1,23 @@
 import FirstView from "@/components/sections/firstView";
 import Footer from "@/components/layouts/footer";
 import About from "@/components/sections/about";
-import LatestArticles from "@/components/sections/latestArticles";
-import PopularTags from "@/components/sections/popularTags";
+import LatestPosts from "@/components/sections/latestPosts";
+import Svgs from "@/components/sections/svgs";
 import { fetchData } from "@/api/fetchData";
-import { ArticleProps } from "@/types/articles";
+import { PostProps } from "@/types/posts";
 import { TagProps } from "@/types/tags";
+import PopularTags from "@/components/sections/popularTags";
+import Header from "@/components/layouts/header";
 
 export default async function Home() {
-  let articles = [];
-  let tags = [];
+  let posts: PostProps[] = [];
+  let tags: TagProps[] = [];
 
   // サーバーコンポーネント内でデータを取得
   try {
-    const articlesData = await fetchData({
+    const postsData = await fetchData({
       endpoint: "snippets",
-      params: { "pagination[pageSize]": 5 },
+      params: { "pagination[pageSize]": 5, populate: "tags" },
     });
 
     const tagsData = await fetchData({
@@ -23,32 +25,21 @@ export default async function Home() {
       params: { "pagination[pageSize]": 6 },
     });
 
-    articles = articlesData.data.map(
-      (item: { id: number; attributes: ArticleProps }) => ({
-        id: item.id,
-        title: item.attributes.title,
-        content: item.attributes.content,
-        media: item.attributes.media,
-        publishedAt: item.attributes.publishedAt,
-      })
-    );
-
-    tags = tagsData.data.map((item: { id: number; attributes: TagProps }) => ({
-      id: item.id,
-      slug: item.attributes.slug,
-      name: item.attributes.name,
-    }));
+    posts = postsData.data;
+    tags = tagsData.data;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
-
   return (
-    <main>
-      <FirstView />
-      <About />
-      <LatestArticles articles={articles} />
-      <PopularTags tags={tags} />
+    <>
+      <main>
+        <FirstView />
+        <About />
+        <Svgs />
+        <PopularTags tags={tags} />
+        <LatestPosts posts={posts} isSecondary />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

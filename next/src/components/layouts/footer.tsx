@@ -19,10 +19,10 @@ const Footer = () => (
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/latest-articles">LATEST ARTICLES</Link>
+              <Link href="/svgs">SVGs</Link>
             </li>
             <li>
-              <Link href="/tags">TAGS</Link>
+              <Link href="/blog">BLOG</Link>
             </li>
           </ul>
         </nav>

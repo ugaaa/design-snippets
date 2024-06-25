@@ -1,2 +1,24 @@
 .searchbox {
+  position: relative;
+  input {
+    position: relative;
+    border-radius: 100vh;
+    border: none;
+    padding: 10px 20px 10px 40px;
+    font-size: 16px;
+    &:focus-visible {
+      outline: var(--color-green) auto 1px;
+    }
+  }
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    svg {
+      fill: var(--color-green);
+      vertical-align: middle;
+      pointer-events: none;
+    }
+  }
 }

@@ -1,0 +1,13 @@
+@import "@/styles/variables";
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+  @media screen and (min-width: ($BREAK_POINT * 1px)) {
+    gap: 20px;
+  }
+}

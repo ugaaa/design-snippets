@@ -1,5 +1,12 @@
+import { PostProps } from "./posts";
+
 export interface TagProps {
   id: number;
-  slug: string;
-  name: string;
+  attributes: {
+    slug: string;
+    name: string;
+    snippets?: {
+      data: PostProps[];
+    };
+  };
 }

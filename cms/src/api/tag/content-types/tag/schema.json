@@ -33,6 +33,12 @@
           "localized": true
         }
       }
+    },
+    "snippets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::snippet.snippet",
+      "inversedBy": "tags"
     }
   }
 }
