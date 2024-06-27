@@ -17,12 +17,12 @@ export default async function Home() {
   try {
     const postsData = await fetchData({
       endpoint: "snippets",
-      params: { "pagination[pageSize]": 6, populate: "tags" },
+      params: { "pagination[pageSize]": 6, "populate[0]": "tags" },
     });
 
     const tagsData = await fetchData({
       endpoint: "tags",
-      params: { "pagination[pageSize]": 100, populate: "snippets" },
+      params: { "pagination[pageSize]": 100, "populate[0]": "snippets" },
     });
 
     posts = postsData.data;
@@ -44,7 +44,7 @@ export default async function Home() {
               <ul className={styles.tagList}>
                 {tags.map((tag) => (
                   <li key={tag.id}>
-                    <Button isSimple href={`/tags/${tag.id}`}>
+                    <Button isSimple href={`/blog/tags/${tag.id}`}>
                       #{tag.attributes.name}
                       {tag.attributes.snippets && (
                         <span>

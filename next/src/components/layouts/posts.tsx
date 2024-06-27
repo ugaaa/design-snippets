@@ -1,18 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import styles from "./posts.module.scss";
-import Article from "./article";
 import { PostProps } from "@/types/posts";
 import useFormattedDate from "@/hooks/useFormattedDate";
+import ImageComponent from "../common/ImageComponent";
+import Tags from "./tags";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400"] });
 
 export const Post = ({ post }: { post: PostProps }) => {
   return (
-    <div>
-      <div>{post.attributes.media}</div>
-      <div>
-        <span>{post.attributes.title}</span>
-        <span>{useFormattedDate(post.attributes.publishedAt)}</span>
+    <div className={styles.post}>
+      <ImageComponent
+        src={
+          post.attributes.thumbnail?.data &&
+          `${process.env.NEXT_PUBLIC_IMAGE_URL}${post.attributes.thumbnail.data.attributes.formats.large.url}`
+        }
+        alt={post.attributes.title}
+      />
+      <div className={styles.contents}>
+        <div className={styles.head}>
+          {post.attributes.tags?.data && (
+            <Tags tags={post.attributes.tags.data} />
+          )}
+          <h3 className={styles.title}>{post.attributes.title}</h3>
+        </div>
+        <p className={`${montserrat.className} ${styles.date} text-black-60`}>
+          {useFormattedDate(post.attributes.publishedAt)}
+        </p>
       </div>
     </div>
   );
@@ -20,11 +36,9 @@ export const Post = ({ post }: { post: PostProps }) => {
 
 const Posts = ({ posts }: { posts: PostProps[] }) => {
   return (
-    <div>
+    <div className={styles.posts}>
       {posts.map((post: PostProps) => (
-        <div key={post.id}>
-          <Post post={post} />
-        </div>
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );

@@ -1,4 +1,47 @@
+@import "@/styles/variables";
+
+.posts {
+  display: flex;
+  // grid-template-columns: 1fr;
+  width: 100%;
+  gap: 30px;
+  @media screen and (min-width: 600px) {
+    // grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (min-width: ($BREAK_POINT * 1px)) {
+    // grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+  }
+
+  .post {
+    flex: 1;
+  }
+}
+
 .post {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 100%;
   background: #fff;
   border-radius: var(--border-radius);
+  overflow: hidden;
+  .contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 30px;
+  }
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+  .date {
+    text-align: right;
+    font-size: 0.75rem;
+  }
 }

@@ -17,7 +17,11 @@ export default async function Home() {
   try {
     const postsData = await fetchData({
       endpoint: "snippets",
-      params: { "pagination[pageSize]": 5, populate: "tags" },
+      params: {
+        "pagination[pageSize]": 6,
+        "populate[0]": "tags",
+        "populate[1]": "thumbnail",
+      },
     });
 
     const tagsData = await fetchData({

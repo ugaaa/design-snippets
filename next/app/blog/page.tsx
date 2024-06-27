@@ -12,14 +12,18 @@ export default async function Home() {
   try {
     const postsData = await fetchData({
       endpoint: "snippets",
-      params: { "pagination[pageSize]": 12 },
+      params: {
+        "pagination[pageSize]": 12,
+        "populates[0]": "tags",
+        "populates[1]": "thumbnail",
+      },
     });
 
     posts = postsData.data;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
-
+  console.log(posts);
   return (
     <>
       <Header />

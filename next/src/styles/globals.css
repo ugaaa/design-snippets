@@ -1,4 +1,5 @@
 :root {
+  --color-black-rgb: 0, 0, 0;
   --color-black: #000;
   --color-yellow: #FFC107;
   --color-pink: #E91E63;
@@ -17,10 +18,13 @@
   }
 }
 
+html {
+  font-size: var(--font-size-base);
+}
+
 body {
   color: var(--color-black);
   background: var(--color-yellow);
-  font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 }
 
@@ -117,6 +121,18 @@ a {
   color: var(--color-black);
 }
 
+.text-black-20 {
+  color: rgba(var(--color-black-rgb), 0.2);
+}
+
+.text-black-60 {
+  color: rgba(var(--color-black-rgb), 0.6);
+}
+
+.text-black-80 {
+  color: rgba(var(--color-black-rgb), 0.8);
+}
+
 .bg-yellow {
   background: var(--color-yellow);
 }
@@ -143,4 +159,16 @@ a {
 
 .bg-black {
   background: var(--color-black);
+}
+
+.bg-black-20 {
+  background: rgba(var(--color-black-rgb), 0.2);
+}
+
+.bg-black-60 {
+  background: rgba(var(--color-black-rgb), 0.6);
+}
+
+.bg-black-80 {
+  background: rgba(var(--color-black-rgb), 0.8);
 }

@@ -10,7 +10,7 @@ import { TagProps } from "@/types/tags";
 const PopularTags = ({ tags }: { tags: TagProps[] }) => {
   const list = tags.map((tag: TagProps) => (
     <li key={tag.id}>
-      <Link href={`/tags/${tag.id}`}>
+      <Link href={`/blog/tags/${tag.id}`}>
         <span>#{tag.attributes.name}</span>
       </Link>
     </li>
@@ -23,7 +23,7 @@ const PopularTags = ({ tags }: { tags: TagProps[] }) => {
           人気のタグ
         </Title>
         <ul className={styles.list}>{list}</ul>
-        <Button href="/tags">タグをもっと見る</Button>
+        <Button href="/blog/tags">タグをもっと見る</Button>
       </Container>
     </section>
   );

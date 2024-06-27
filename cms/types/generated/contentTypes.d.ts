@@ -824,10 +824,10 @@ export interface ApiSnippetSnippet extends Schema.CollectionType {
       'manyToMany',
       'api::tag.tag'
     >;
-    media: Attribute.Media &
+    thumbnail: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;

@@ -17,6 +17,7 @@ const Svgs = ({ isSecondary }: { isSecondary?: boolean }) => {
         <Title as={isSecondary ? "h2" : "h1"} isWhite>
           SVGs
         </Title>
+
         <Button href="/svgs">SVG画像をもっと見る</Button>
       </Container>
     </section>
