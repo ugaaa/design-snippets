@@ -4,14 +4,13 @@ import About from "@/components/sections/about";
 import LatestPosts from "@/components/sections/latestPosts";
 import Svgs from "@/components/sections/svgs";
 import { fetchData } from "@/api/fetchData";
-import { PostProps } from "@/types/posts";
-import { TagProps } from "@/types/tags";
+import { PostType } from "@/types/posts";
+import { TagType } from "@/types/tags";
 import PopularTags from "@/components/sections/popularTags";
-import Header from "@/components/layouts/header";
 
 export default async function Home() {
-  let posts: PostProps[] = [];
-  let tags: TagProps[] = [];
+  let posts: PostType[] = [];
+  let tags: TagType[] = [];
 
   // サーバーコンポーネント内でデータを取得
   try {

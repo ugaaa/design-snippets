@@ -5,10 +5,10 @@ import Container from "@/components/layouts/container";
 import Title from "../common/title";
 import Button from "../common/button";
 import Link from "next/link";
-import { TagProps } from "@/types/tags";
+import { TagType } from "@/types/tags";
 
-const PopularTags = ({ tags }: { tags: TagProps[] }) => {
-  const list = tags.map((tag: TagProps) => (
+const PopularTags = ({ tags }: { tags: TagType[] }) => {
+  const list = tags.map((tag: TagType) => (
     <li key={tag.id}>
       <Link href={`/blog/tags/${tag.id}`}>
         <span>#{tag.attributes.name}</span>

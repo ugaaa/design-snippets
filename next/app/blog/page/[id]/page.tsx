@@ -5,7 +5,11 @@ import { PostType } from "@/types/posts";
 import LatestPosts from "@/components/sections/latestPosts";
 import { PaginationType } from "@/types/strapi";
 
-export default async function Blog() {
+export default async function BlogPages({
+  params,
+}: {
+  params: { id: string };
+}) {
   let posts: PostType[] = [];
   let pagination: PaginationType | undefined;
 
@@ -14,12 +18,12 @@ export default async function Blog() {
     const postsData = await fetchData({
       endpoint: "snippets",
       params: {
-        "pagination[page]": 1,
+        "pagination[page]": Number(params.id),
         "populate[0]": "tags",
         "populate[1]": "thumbnail",
       },
     });
-
+    console.log(postsData);
     posts = postsData.data;
     pagination = postsData.meta.pagination;
   } catch (error) {

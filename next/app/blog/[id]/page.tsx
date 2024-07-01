@@ -1,7 +1,7 @@
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import { fetchData } from "@/api/fetchData";
-import { PostProps } from "@/types/posts";
+import { PostType } from "@/types/posts";
 import Posts from "@/components/layouts/posts";
 import Container from "@/components/layouts/container";
 import Title from "@/components/common/title";
@@ -12,7 +12,7 @@ export default async function BlogSingle({
 }: {
   params: { id: string };
 }) {
-  let post: PostProps;
+  let post: PostType;
   // サーバーコンポーネント内でデータを取得
   try {
     const postsData = await fetchData({

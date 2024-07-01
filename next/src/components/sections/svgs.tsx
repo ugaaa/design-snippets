@@ -4,17 +4,17 @@ import Button from "../common/button";
 import Title from "../common/title";
 import Container from "../layouts/container";
 
-const Svgs = ({ isSecondary }: { isSecondary?: boolean }) => {
+const Svgs = () => {
   return (
     <section>
       <Container
         ball={{
-          color: isSecondary ? "pink" : "blue",
-          position: isSecondary ? "center" : "right",
+          color: "blue",
+          position: "right",
         }}
         hasTitle
       >
-        <Title as={isSecondary ? "h2" : "h1"} isWhite>
+        <Title as={"h1"} isWhite>
           SVGs
         </Title>
 

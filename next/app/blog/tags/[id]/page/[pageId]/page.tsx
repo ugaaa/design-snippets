@@ -9,7 +9,11 @@ import Posts from "@/components/layouts/posts";
 import { PaginationType } from "@/types/strapi";
 import Pagination from "@/components/common/pagination";
 
-export default async function TagPage({ params }: { params: { id: string } }) {
+export default async function TagPagesPage({
+  params,
+}: {
+  params: { id: string; pageId: string };
+}) {
   let tag: TagType | undefined;
   let tagPosts: PostType[] = [];
   let pagination: PaginationType | undefined;
@@ -25,6 +29,7 @@ export default async function TagPage({ params }: { params: { id: string } }) {
       endpoint: "snippets",
       params: {
         "pagination[pageSize]": 12,
+        "pagination[page]": params.pageId,
         "filters[tags]": params.id,
         "populate[0]": "thumbnail",
       },

@@ -1,15 +1,20 @@
 import { type BlocksContent } from "@strapi/blocks-react-renderer";
-import { TagProps } from "./tags";
-import { ThumbnailType } from "./strapi";
+import { TagType } from "./tags";
+import { StrapiMetaTypes, ThumbnailType } from "./strapi";
 
-export interface PostProps {
+export interface PostType {
   id: number;
   attributes: {
     title: string;
     content: BlocksContent;
     media?: string;
-    tags?: { data?: TagProps[] };
+    tags?: { data?: TagType[] };
     thumbnail?: { data?: ThumbnailType };
     publishedAt: string;
   };
 }
+
+export type PostsType = {
+  data: PostType[];
+  meta: StrapiMetaTypes;
+};

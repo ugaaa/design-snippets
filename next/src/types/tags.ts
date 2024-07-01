@@ -1,12 +1,18 @@
-import { PostProps } from "./posts";
+import { PostType } from "./posts";
+import { StrapiMetaTypes } from "./strapi";
 
-export interface TagProps {
+export interface TagType {
   id: number;
   attributes: {
     slug: string;
     name: string;
     snippets?: {
-      data: PostProps[];
+      data: PostType[];
     };
   };
+}
+
+export interface TagResponseType {
+  data: TagType;
+  meta: StrapiMetaTypes;
 }

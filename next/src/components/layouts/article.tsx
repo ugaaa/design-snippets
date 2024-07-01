@@ -4,11 +4,11 @@ import {
 } from "@strapi/blocks-react-renderer";
 import React from "react";
 
-interface PostProps {
+interface PostType {
   content: BlocksContent;
 }
 
-const Article: React.FC<PostProps> = ({ content }) => {
+const Article: React.FC<PostType> = ({ content }) => {
   return (
     <article>
       <BlocksRenderer content={content} />;

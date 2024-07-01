@@ -1,23 +1,27 @@
 import Footer from "@/components/layouts/footer";
 import { fetchData } from "@/api/fetchData";
-import { TagProps } from "@/types/tags";
+import { TagType } from "@/types/tags";
 import Header from "@/components/layouts/header";
 import Button from "@/components/common/button";
 import Container from "@/components/layouts/container";
 import Title from "@/components/common/title";
 import LatestPosts from "@/components/sections/latestPosts";
-import { PostProps } from "@/types/posts";
+import { PostType } from "@/types/posts";
 import styles from "./tags.module.scss";
 
-export default async function Home() {
-  let posts: PostProps[] = [];
-  let tags: TagProps[] = [];
+export default async function Tags() {
+  let posts: PostType[] = [];
+  let tags: TagType[] = [];
 
   // サーバーコンポーネント内でデータを取得
   try {
     const postsData = await fetchData({
       endpoint: "snippets",
-      params: { "pagination[pageSize]": 6, "populate[0]": "tags" },
+      params: {
+        "pagination[pageSize]": 6,
+        "populate[0]": "tags",
+        "populate[1]": "thumbnail",
+      },
     });
 
     const tagsData = await fetchData({

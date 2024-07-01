@@ -2,26 +2,26 @@
 
 import Button from "../common/button";
 import Title from "../common/title";
-import { PostProps } from "@/types/posts";
+import { PostType } from "@/types/posts";
 import Posts from "@/components/layouts/posts";
 import Container from "../layouts/container";
 import Pagination from "../common/pagination";
-import { PaginationTypes } from "@/types/strapi";
+import { PaginationType } from "@/types/strapi";
 
 const LatestPosts = ({
   posts,
   pagination,
   isSecondary,
 }: {
-  posts: PostProps[];
-  pagination?: PaginationTypes;
+  posts: PostType[];
+  pagination?: PaginationType;
   isSecondary?: boolean;
 }) => {
   return (
     <section>
       <Container
         ball={{
-          color: isSecondary ? "pink" : "blue",
+          color: "pink",
           position: isSecondary ? "center" : "right",
         }}
         hasTitle
@@ -34,10 +34,9 @@ const LatestPosts = ({
           新着記事
         </Title>
         <Posts posts={posts} />
-        {isSecondary ? (
-          <Button href="/blog">新着記事をもっと見る</Button>
-        ) : (
-          <Pagination pagination={pagination} />
+        {isSecondary && <Button href="/blog">新着記事をもっと見る</Button>}
+        {!isSecondary && pagination?.pageCount && pagination?.pageCount > 1 && (
+          <Pagination page={pagination?.page} total={pagination?.pageCount} />
         )}
       </Container>
     </section>

@@ -1,7 +1,7 @@
-import { TagProps } from "@/types/tags";
+import { TagType } from "@/types/tags";
 import Link from "next/link";
 
-export const Tag = ({ tag }: { tag: TagProps }) => (
+export const Tag = ({ tag }: { tag: TagType }) => (
   <Link
     href={`/blog/tags/${tag.id}`}
     style={{ display: "block", fontSize: "0.75rem" }}
@@ -10,8 +10,7 @@ export const Tag = ({ tag }: { tag: TagProps }) => (
   </Link>
 );
 
-const Tags = ({ tags }: { tags: TagProps[] }) => {
-  console.log(tags);
+const Tags = ({ tags }: { tags: TagType[] }) => {
   if (tags.length === 0) return;
   return (
     <ul
@@ -26,29 +25,9 @@ const Tags = ({ tags }: { tags: TagProps[] }) => {
       }}
     >
       {tags.map((tag) => (
-        <>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-          <li key={`tag-${tag.id}`}>
-            <Tag tag={tag} />
-          </li>
-        </>
+        <li key={`tag-${tag.id}`}>
+          <Tag tag={tag} />
+        </li>
       ))}
     </ul>
   );

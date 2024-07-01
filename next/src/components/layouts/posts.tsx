@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./posts.module.scss";
-import { PostProps } from "@/types/posts";
+import { PostType } from "@/types/posts";
 import useFormattedDate from "@/hooks/useFormattedDate";
 import ImageComponent from "../common/ImageComponent";
 import Tags from "./tags";
@@ -9,7 +9,7 @@ import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400"] });
 
-export const Post = ({ post }: { post: PostProps }) => {
+export const Post = ({ post }: { post: PostType }) => {
   return (
     <div className={styles.post}>
       <ImageComponent
@@ -34,10 +34,10 @@ export const Post = ({ post }: { post: PostProps }) => {
   );
 };
 
-const Posts = ({ posts }: { posts: PostProps[] }) => {
+const Posts = ({ posts }: { posts: PostType[] }) => {
   return (
     <div className={styles.posts}>
-      {posts.map((post: PostProps) => (
+      {posts.map((post: PostType) => (
         <Post key={post.id} post={post} />
       ))}
     </div>

@@ -11,7 +11,7 @@ const montserrat = Montserrat({ subsets: ["latin"], weight: ["900"] });
 
 const Footer = () => (
   <footer className={styles.footer}>
-    <Container>
+    <Container disabledYPadding>
       <div className={styles.head}>
         <nav className={styles.nav}>
           <ul className={montserrat.className}>
@@ -43,19 +43,37 @@ const Footer = () => (
             </p>
             <ul className={styles.links}>
               <li>
-                <a href="" className={`${styles.btn} bg-orange`}>
+                <Link
+                  href="https://ugaaa.com/"
+                  target="_blank"
+                  className={`${styles.btn} bg-orange`}
+                >
                   WEBSITE
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="" className={`${styles.btn} bg-black`}>
+                <Link
+                  href="https://x.com/ugaaaaa_x"
+                  className={`${styles.btn} bg-black`}
+                >
                   X
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="" className={`${styles.btn} bg-pink`}>
+                <Link
+                  href="https://www.instagram.com/ugaaa_world/"
+                  className={`${styles.btn} bg-pink`}
+                >
                   Instagram
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://zenn.dev/ugaaa"
+                  className={`${styles.btn} bg-blue`}
+                >
+                  Zenn
+                </Link>
               </li>
             </ul>
           </div>

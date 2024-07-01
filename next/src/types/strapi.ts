@@ -1,4 +1,4 @@
-export type PaginationTypes = {
+export type PaginationType = {
   page: number;
   pageSize: number;
   pageCount: number;
@@ -41,5 +41,5 @@ export type ThumbnailType = {
 };
 
 export type StrapiMetaTypes = {
-  pagination: PaginationTypes;
+  pagination: PaginationType;
 };
