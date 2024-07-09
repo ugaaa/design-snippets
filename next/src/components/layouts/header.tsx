@@ -6,6 +6,7 @@ import Searchbox from "@/components/common/searchbox";
 import Container from "@/components/layouts/container";
 import styles from "./header.module.scss";
 import Link from "next/link";
+import IcoArrow from "../svgs/icoArrow";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["900"] });
 
@@ -18,12 +19,21 @@ const Header = () => (
         </div>
 
         <nav className={styles.gnav}>
-          <ul className={montserrat.className}>
+          <ul>
             <li>
-              <Link href="/blog">BLOG</Link>
+              <Link className={montserrat.className} href="/blog">
+                BLOG
+              </Link>
             </li>
             <li>
-              <Link href="/svgs">SVGs</Link>
+              <button
+                type="button"
+                className={montserrat.className}
+                onClick={() => {}}
+              >
+                TOOLS
+                <IcoArrow direction="bottom" />
+              </button>
             </li>
           </ul>
         </nav>

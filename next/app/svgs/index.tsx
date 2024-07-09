@@ -6,27 +6,27 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 export const svgs = [
   {
     name: "Circle Loader",
-    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke-width="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Square Loader",
-    svg: `<svg viewBox="0 0 50 50"><rect x="5" y="5" width="40" height="40" stroke-width="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></rect></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><rect x="5" y="5" width="40" height="40" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></rect></svg>`,
   },
   {
     name: "Three Dots",
-    svg: `<svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="9" fill-opacity="0.3"><animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fillOpacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="9" fillOpacity="0.3"><animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fillOpacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fillOpacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Ripple",
-    svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="0" stroke="#000" fill="none" stroke-width="2"><animate attributeName="r" begin="0s" dur="1.5s" values="0;40" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" begin="0s" dur="1.5s" values="1;0" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="0" stroke="#000" fill="none" stroke-width="2"><animate attributeName="r" begin="0.75s" dur="1.5s" values="0;40" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" begin="0.75s" dur="1.5s" values="1;0" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="0" stroke="#000" fill="none" strokeWidth="2"><animate attributeName="r" begin="0s" dur="1.5s" values="0;40" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" begin="0s" dur="1.5s" values="1;0" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="0" stroke="#000" fill="none" strokeWidth="2"><animate attributeName="r" begin="0.75s" dur="1.5s" values="0;40" calcMode="linear" repeatCount="indefinite"/><animate attributeName="opacity" begin="0.75s" dur="1.5s" values="1;0" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Spinner",
-    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke-width="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" strokeWidth="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Ellipsis",
-    svg: `<svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="9" fill-opacity="0.3"><animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fillOpacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="9" fillOpacity="0.3"><animate attributeName="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fillOpacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="15"><animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear" repeatCount="indefinite"/><animate attributeName="fillOpacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Pulse",
@@ -34,7 +34,7 @@ export const svgs = [
   },
   {
     name: "Bounce",
-    svg: `<svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="12"><animate attributeName="cy" from="15" to="15" begin="0s" dur="0.8s" values="15;5;15" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="12" fill-opacity="0.3"><animate attributeName="cy" from="15" to="15" begin="0s" dur="0.8s" values="15;5;15" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="12"><animate attributeName="cy" from="15" to="15" begin="0s" dur="0.8s" values="15;5;15" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="12"><animate attributeName="cy" from="15" to="15" begin="0s" dur="0.8s" values="15;5;15" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="60" cy="15" r="12" fillOpacity="0.3"><animate attributeName="cy" from="15" to="15" begin="0s" dur="0.8s" values="15;5;15" calcMode="linear" repeatCount="indefinite"/></circle><circle cx="105" cy="15" r="12"><animate attributeName="cy" from="15" to="15" begin="0s" dur="0.8s" values="15;5;15" calcMode="linear" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Bar Loader",
@@ -42,7 +42,7 @@ export const svgs = [
   },
   {
     name: "Dual Ring",
-    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke-width="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle><circle cx="25" cy="25" r="10" stroke-width="5" stroke="#000" fill="none" stroke-dasharray="15.7 15.7"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="-360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" strokeWidth="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle><circle cx="25" cy="25" r="10" strokeWidth="5" stroke="#000" fill="none" stroke-dasharray="15.7 15.7"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="-360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Heart Beat",
@@ -54,7 +54,7 @@ export const svgs = [
   },
   {
     name: "Infinity",
-    svg: `<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M17.5,25A12.5,12.5,0,1,1,30,37.5h0A12.5,12.5,0,1,1,42.5,25,12.5,12.5,0,1,1,55,12.5h0A12.5,12.5,0,1,1,67.5,25,12.5,12.5,0,1,1,80,37.5h0A12.5,12.5,0,1,1,92.5,25" fill="none" stroke="#000" stroke-width="5"><animate attributeName="stroke-dasharray" values="1, 200; 89, 200; 89, 200" dur="2s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" values="0; -124; -124" dur="2s" repeatCount="indefinite"/></path></svg>`,
+    svg: `<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M17.5,25A12.5,12.5,0,1,1,30,37.5h0A12.5,12.5,0,1,1,42.5,25,12.5,12.5,0,1,1,55,12.5h0A12.5,12.5,0,1,1,67.5,25,12.5,12.5,0,1,1,80,37.5h0A12.5,12.5,0,1,1,92.5,25" fill="none" stroke="#000" strokeWidth="5"><animate attributeName="stroke-dasharray" values="1, 200; 89, 200; 89, 200" dur="2s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" values="0; -124; -124" dur="2s" repeatCount="indefinite"/></path></svg>`,
   },
   {
     name: "Loading Bar",
@@ -62,23 +62,23 @@ export const svgs = [
   },
   {
     name: "Rolling",
-    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke-width="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></circle><circle cx="25" cy="25" r="10" stroke-width="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="-360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></circle><circle cx="25" cy="25" r="10" strokeWidth="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="-360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Oval",
-    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke-width="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" strokeWidth="5" stroke="#000" fill="none" stroke-dasharray="31.4 31.4"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
   },
   {
     name: "Triangle",
-    svg: `<svg viewBox="0 0 50 50"><polygon points="25,5 45,45 5,45" stroke-width="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></polygon></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><polygon points="25,5 45,45 5,45" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></polygon></svg>`,
   },
   {
     name: "Hexagon",
-    svg: `<svg viewBox="0 0 50 50"><polygon points="25,5 45,20 45,40 25,55 5,40 5,20" stroke-width="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></polygon></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><polygon points="25,5 45,20 45,40 25,55 5,40 5,20" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></polygon></svg>`,
   },
   {
     name: "Star",
-    svg: `<svg viewBox="0 0 50 50"><polygon points="25,5 32,20 45,20 35,30 38,45 25,38 12,45 15,30 5,20 18,20" stroke-width="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></polygon></svg>`,
+    svg: `<svg viewBox="0 0 50 50"><polygon points="25,5 32,20 45,20 35,30 38,45 25,38 12,45 15,30 5,20 18,20" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></polygon></svg>`,
   },
 ];
 
@@ -95,7 +95,7 @@ const SvgPageInner = () => {
       .replace(/stroke="#000"/g, `stroke="${color}"`)
       .replace(/fill="none"/g, `fill="${background}"`)
       .replace(/dur="2s"/g, `dur="${speed}s"`)
-      .replace(/stroke-width="5"/g, `stroke-width="${size / 10}"`);
+      .replace(/strokeWidth="5"/g, `strokeWidth="${size / 10}"`);
     // .replace(/width="40"/g, `width="${size - 10}"`)
     // .replace(/height="40"/g, `height="${size - 10}"`);
   };
@@ -104,7 +104,7 @@ const SvgPageInner = () => {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Loading SVG Customizer</h1>
+      <h1>Loading SVG カスタマイザー</h1>
       {svgs.map((svg, index) => (
         <label key={index} style={{ display: "block" }}>
           <input

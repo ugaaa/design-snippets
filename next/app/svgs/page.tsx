@@ -13,13 +13,13 @@ const SvgPage = () => {
         <Header />
         <Container
           ball={{
-            color: "blue",
+            color: "pink",
             position: "right",
           }}
           hasTitle
         >
-          <Title as={"h1"} isWhite>
-            Loading SVG Customizer
+          <Title as={"h1"} ball={{ main: "green", sub: "yellow" }} isWhite>
+            Loading SVG カスタマイザー
           </Title>
 
           <SvgPageInner />

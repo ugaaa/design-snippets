@@ -16,13 +16,13 @@ const Footer = () => (
         <nav className={styles.nav}>
           <ul className={montserrat.className}>
             <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/svgs">SVGs</Link>
+              <Link href="/">HOME</Link>
             </li>
             <li>
               <Link href="/blog">BLOG</Link>
+            </li>
+            <li>
+              <Link href="/svgs">SITEMAP</Link>
             </li>
           </ul>
         </nav>

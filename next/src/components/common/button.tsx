@@ -7,6 +7,7 @@ type ButtonProps = {
   href: string;
   target?: "_blank" | "_self";
   isSimple?: boolean;
+  isOrange?: boolean;
   children: React.ReactNode;
 };
 
@@ -26,3 +27,18 @@ const Button = ({
 );
 
 export default Button;
+
+export const LargeButton = ({
+  href = "",
+  target = "_self",
+  isOrange,
+  children,
+}: ButtonProps) => (
+  <Link
+    href={href}
+    target={target}
+    className={`${styles.largeButton} ${isOrange ? styles.isOrange : ""}`}
+  >
+    <span>{children}</span>
+  </Link>
+);

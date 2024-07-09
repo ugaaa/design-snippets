@@ -11,33 +11,37 @@ import { PaginationType } from "@/types/strapi";
 const LatestPosts = ({
   posts,
   pagination,
-  isSecondary,
+  layout = "section",
 }: {
   posts: PostType[];
   pagination?: PaginationType;
-  isSecondary?: boolean;
+  layout?: "section" | "main" | "footer";
 }) => {
   return (
     <section>
       <Container
         ball={{
-          color: "pink",
-          position: isSecondary ? "center" : "right",
+          color: "blue",
+          position: layout === "footer" ? "center" : "right",
         }}
         hasTitle
       >
         <Title
-          as={isSecondary ? "h2" : "h1"}
-          ball={{ main: "green", sub: "yellow" }}
+          as={layout === "main" ? "h2" : "h1"}
+          ball={{ main: "yellow", sub: "pink" }}
           isWhite
         >
           新着記事
         </Title>
         <Posts posts={posts} />
-        {isSecondary && <Button href="/blog">新着記事をもっと見る</Button>}
-        {!isSecondary && pagination?.pageCount && pagination?.pageCount > 1 && (
-          <Pagination page={pagination?.page} total={pagination?.pageCount} />
+        {layout !== "main" && (
+          <Button href="/blog">新着記事をもっと見る</Button>
         )}
+        {layout === "main" &&
+          pagination?.pageCount &&
+          pagination?.pageCount > 1 && (
+            <Pagination page={pagination?.page} total={pagination?.pageCount} />
+          )}
       </Container>
     </section>
   );

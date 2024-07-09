@@ -7,6 +7,7 @@ import { fetchData } from "@/api/fetchData";
 import { PostType } from "@/types/posts";
 import { TagType } from "@/types/tags";
 import PopularTags from "@/components/sections/popularTags";
+import ToolsFooter from "@/components/sections/toolsFooter";
 
 export default async function Home() {
   let posts: PostType[] = [];
@@ -38,9 +39,9 @@ export default async function Home() {
       <main>
         <FirstView />
         <About />
-        <Svgs />
+        <LatestPosts posts={posts} layout="section" />
         <PopularTags tags={tags} />
-        <LatestPosts posts={posts} isSecondary />
+        <ToolsFooter isSecondary />
       </main>
       <Footer />
     </>

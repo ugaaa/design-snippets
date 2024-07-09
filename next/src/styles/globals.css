@@ -75,11 +75,13 @@ svg {
   vertical-align: bottom;
 }
 
-a {
+a,
+button {
   color: var(--color-orange);
   text-decoration: none;
   transition: color 0.3s;
   font-weight: bold;
+  cursor: pointer;
 }
 
 @media (hover: hover) {

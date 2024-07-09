@@ -1,28 +1,12 @@
 @import "@/styles/variables";
 
-.posts {
-  display: flex;
-  // grid-template-columns: 1fr;
-  width: 100%;
-  gap: 30px;
-  @media screen and (min-width: 600px) {
-    // grid-template-columns: repeat(2, 1fr);
-  }
-  @media screen and (min-width: ($BREAK_POINT * 1px)) {
-    // grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
-  }
-
-  .post {
-    flex: 1;
-  }
-}
-
 .post {
+  position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 100%;
   background: #fff;
+  height: 100%;
   border-radius: var(--border-radius);
   overflow: hidden;
   .contents {
@@ -43,5 +27,34 @@
   .date {
     text-align: right;
     font-size: 0.75rem;
+  }
+  .tags {
+    position: relative;
+    z-index: 1;
+  }
+  .link {
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+    }
+  }
+  @media (hover: hover) {
+    .thumbnail {
+      overflow: hidden;
+      img {
+        transition: all var(--hover-duration);
+      }
+    }
+    &:hover {
+      .thumbnail {
+        img {
+          scale: 1.1;
+        }
+      }
+    }
   }
 }

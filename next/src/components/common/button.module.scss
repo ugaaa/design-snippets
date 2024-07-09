@@ -50,3 +50,59 @@
     }
   }
 }
+
+.largeButton {
+  position: relative;
+  height: 100%;
+  display: block;
+  text-align: center;
+  border-radius: var(--border-radius);
+  background: var(--color-yellow);
+  padding: 30px 10px;
+  font-size: 1.5rem;
+  overflow: hidden;
+  color: var(--color-black);
+  @media screen and (min-width: ($BREAK_POINT * 1px)) {
+    padding: 60px 20px;
+    font-size: 2rem;
+  }
+  span {
+    position: relative;
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    content: "";
+    transition: all 1s;
+    background: #fff;
+  }
+  &.isOrange {
+    color: #fff;
+    &::before {
+      background: var(--color-orange);
+    }
+  }
+  svg {
+    transition: all var(--hover-duration);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: #fff;
+      &::before {
+        width: 200%;
+        background: var(--color-green);
+        transition: all var(--hover-duration);
+      }
+      svg {
+        color: #fff;
+      }
+    }
+  }
+}

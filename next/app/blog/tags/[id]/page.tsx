@@ -50,8 +50,8 @@ export default async function TagPage({ params }: { params: { id: string } }) {
       <>
         <Header />
         <main>
-          <Container ball={{ color: "pink", position: "right" }} hasTitle>
-            <Title as="h1" ball={{ main: "green", sub: "yellow" }} isWhite>
+          <Container ball={{ color: "blue", position: "right" }} hasTitle>
+            <Title as="h1" ball={{ main: "yellow", sub: "pink" }} isWhite>
               タグ: #{tag?.attributes.name}
             </Title>
             <Posts posts={tagPosts} />

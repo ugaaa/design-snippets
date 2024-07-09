@@ -65,7 +65,7 @@ export default async function Tags() {
           </Container>
         </section>
 
-        <LatestPosts posts={posts} isSecondary />
+        <LatestPosts posts={posts} layout="footer" />
       </main>
       <Footer />
     </>
