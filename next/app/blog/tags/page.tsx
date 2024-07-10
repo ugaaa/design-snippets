@@ -1,7 +1,5 @@
-import Footer from "@/components/layouts/footer";
 import { fetchData } from "@/api/fetchData";
 import { TagType } from "@/types/tags";
-import Header from "@/components/layouts/header";
 import Button from "@/components/common/button";
 import Container from "@/components/layouts/container";
 import Title from "@/components/common/title";
@@ -36,38 +34,34 @@ export default async function Tags() {
   }
   return (
     <>
-      <Header />
-      <main>
-        <section className="bg-white">
-          <Container hasTitle>
-            <Title as="h1" ball={{ main: "yellow", sub: "blue" }}>
-              タグ
-            </Title>
+      <section className="bg-white">
+        <Container hasTitle>
+          <Title as="h1" ball={{ main: "yellow", sub: "blue" }}>
+            タグ
+          </Title>
 
-            {tags.length > 0 ? (
-              <ul className={styles.tagList}>
-                {tags.map((tag) => (
-                  <li key={tag.id}>
-                    <Button isSimple href={`/blog/tags/${tag.id}`}>
-                      #{tag.attributes.name}
-                      {tag.attributes.snippets && (
-                        <span>
-                          （{tag.attributes.snippets?.data.length || 0}）
-                        </span>
-                      )}
-                    </Button>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>タグがありません。</p>
-            )}
-          </Container>
-        </section>
+          {tags.length > 0 ? (
+            <ul className={styles.tagList}>
+              {tags.map((tag) => (
+                <li key={tag.id}>
+                  <Button isSimple href={`/blog/tags/${tag.id}`}>
+                    #{tag.attributes.name}
+                    {tag.attributes.snippets && (
+                      <span>
+                        （{tag.attributes.snippets?.data.length || 0}）
+                      </span>
+                    )}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>タグがありません。</p>
+          )}
+        </Container>
+      </section>
 
-        <LatestPosts posts={posts} layout="footer" />
-      </main>
-      <Footer />
+      <LatestPosts posts={posts} layout="footer" />
     </>
   );
 }

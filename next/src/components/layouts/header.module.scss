@@ -1,29 +1,71 @@
 .header {
-  .headerInner {
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  transition: all 0.5s;
 
-  .gnav {
-    ul {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 60px;
-      margin: 0;
+  &.isScrolled {
+    background: var(--color-yellow);
+  }
+  &.isHome {
+    transform: translateY(-100%);
+    animation: showDown 0.5s 5s forwards;
+    background: var(--color-yellow);
+    &.isScrolled {
+      transform: translateY(0);
     }
-    a,
-    button {
-      &:not(:hover) {
-        color: #fff;
-      }
-      display: flex;
-      align-items: center;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
+  }
+}
+
+.headerInner {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gnav {
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 60px;
+    margin: 0;
+  }
+  a,
+  button {
+    &:not(:hover) {
+      color: #fff;
     }
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+  }
+}
+
+.toolsContainer {
+  background: #fff;
+  border-bottom: 10px solid var(--color-yellow);
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  &.fadeIn {
+    opacity: 1;
+  }
+  &.fadeOut {
+    opacity: 0;
+  }
+}
+
+@keyframes showDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

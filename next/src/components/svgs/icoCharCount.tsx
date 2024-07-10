@@ -1,4 +1,4 @@
-const IcoTextCount = () => (
+const IcoCharCount = () => (
   <svg
     width="100"
     height="100"
@@ -45,4 +45,4 @@ const IcoTextCount = () => (
   </svg>
 );
 
-export default IcoTextCount;
+export default IcoCharCount;

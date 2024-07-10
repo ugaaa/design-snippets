@@ -1,5 +1,3 @@
-import Header from "@/components/layouts/header";
-import Footer from "@/components/layouts/footer";
 import { fetchData } from "@/api/fetchData";
 import Container from "@/components/layouts/container";
 
@@ -22,13 +20,5 @@ export default async function BlogSingle({
     console.error("Error fetching data:", error);
   }
 
-  return (
-    <>
-      <Header />
-      <main>
-        <Container>{/* <Article content={post?.content} /> */}</Container>
-      </main>
-      <Footer />
-    </>
-  );
+  return <Container>{/* <Article content={post?.content} /> */}</Container>;
 }

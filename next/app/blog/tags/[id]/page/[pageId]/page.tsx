@@ -3,8 +3,6 @@ import { fetchData } from "@/api/fetchData";
 import { PostType } from "@/types/posts";
 import { TagType } from "@/types/tags";
 import Title from "@/components/common/title";
-import Header from "@/components/layouts/header";
-import Footer from "@/components/layouts/footer";
 import Posts from "@/components/layouts/posts";
 import { PaginationType } from "@/types/strapi";
 import Pagination from "@/components/common/pagination";
@@ -53,7 +51,6 @@ export default async function TagPagesPage({
     // コンポーネントをレンダリング
     return (
       <>
-        <Header />
         <main>
           <Container ball={{ color: "blue", position: "right" }} hasTitle>
             <Title as="h1" ball={{ main: "yellow", sub: "pink" }} isWhite>
@@ -63,7 +60,6 @@ export default async function TagPagesPage({
             <Pagination page={pagination?.page} total={pagination?.total} />
           </Container>
         </main>
-        <Footer />
       </>
     );
   } catch (error) {

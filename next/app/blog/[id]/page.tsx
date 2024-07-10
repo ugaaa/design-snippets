@@ -1,4 +1,3 @@
-import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import { fetchData } from "@/api/fetchData";
 import { PostType } from "@/types/posts";
@@ -24,16 +23,12 @@ export default async function BlogSingle({
   }
 
   return (
-    <>
-      <Header />
-      <main className="bg-white">
-        <Container>
-          {/* <p>{post.attributes.publishedAt}</p>
+    <article className="bg-white" style={{ marginTop: "100px" }}>
+      <Container>
+        {/* <p>{post.attributes.publishedAt}</p>
           <h1>{post.attributes.title}</h1>
           <Article content={post.attributes.content} /> */}
-        </Container>
-      </main>
-      <Footer />
-    </>
+      </Container>
+    </article>
   );
 }

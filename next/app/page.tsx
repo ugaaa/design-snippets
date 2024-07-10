@@ -2,12 +2,10 @@ import FirstView from "@/components/sections/firstView";
 import Footer from "@/components/layouts/footer";
 import About from "@/components/sections/about";
 import LatestPosts from "@/components/sections/latestPosts";
-import Svgs from "@/components/sections/svgs";
 import { fetchData } from "@/api/fetchData";
 import { PostType } from "@/types/posts";
 import { TagType } from "@/types/tags";
 import PopularTags from "@/components/sections/popularTags";
-import ToolsFooter from "@/components/sections/toolsFooter";
 
 export default async function Home() {
   let posts: PostType[] = [];
@@ -36,14 +34,10 @@ export default async function Home() {
   }
   return (
     <>
-      <main>
-        <FirstView />
-        <About />
-        <LatestPosts posts={posts} layout="section" />
-        <PopularTags tags={tags} />
-        <ToolsFooter isSecondary />
-      </main>
-      <Footer />
+      <FirstView />
+      <About />
+      <LatestPosts posts={posts} layout="section" />
+      <PopularTags tags={tags} />
     </>
   );
 }

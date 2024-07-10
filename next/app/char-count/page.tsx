@@ -1,10 +1,10 @@
 "use client";
 
 import Container from "@/components/layouts/container";
-import SvgPageInner from ".";
+import CharCountPageInner from "./index";
 import Title from "@/components/common/title";
 
-const SvgPage = () => {
+const CharCountPage = () => {
   return (
     <Container
       ball={{
@@ -14,12 +14,12 @@ const SvgPage = () => {
       hasTitle
     >
       <Title as={"h1"} ball={{ main: "green", sub: "yellow" }} isWhite>
-        Loading SVG カスタマイザー
+        文字数カウントツール
       </Title>
 
-      <SvgPageInner />
+      <CharCountPageInner />
     </Container>
   );
 };
 
-export default SvgPage;
+export default CharCountPage;

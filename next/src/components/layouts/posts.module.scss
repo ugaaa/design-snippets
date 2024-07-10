@@ -33,6 +33,7 @@
     z-index: 1;
   }
   .link {
+    color: var(--color-black);
     &::after {
       position: absolute;
       top: 0;
@@ -54,6 +55,9 @@
         img {
           scale: 1.1;
         }
+      }
+      .link {
+        color: var(--color-green);
       }
     }
   }

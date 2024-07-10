@@ -1,5 +1,3 @@
-import Header from "@/components/layouts/header";
-import Footer from "@/components/layouts/footer";
 import { fetchData } from "@/api/fetchData";
 import { PostType } from "@/types/posts";
 import LatestPosts from "@/components/sections/latestPosts";
@@ -30,13 +28,5 @@ export default async function BlogPages({
     console.error("Error fetching data:", error);
   }
 
-  return (
-    <>
-      <Header />
-      <main>
-        <LatestPosts posts={posts} pagination={pagination} />
-      </main>
-      <Footer />
-    </>
-  );
+  return <LatestPosts posts={posts} pagination={pagination} />;
 }
