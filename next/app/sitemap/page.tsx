@@ -1,18 +1,13 @@
 import { fetchData } from "@/api/fetchData";
 import Title from "@/components/common/title";
 import Container from "@/components/layouts/container";
-import Grid, { GridItem } from "@/components/layouts/grid";
 import { PostType } from "@/types/posts";
 import { TagType } from "@/types/tags";
-import Link from "next/link";
-import styled from "styled-components";
 
 type PageType = {
   href: string;
   title: string;
 };
-
-const SitemapContents = styled.div``;
 
 export default async function Sitemap() {
   let tags: TagType[] = [];
@@ -55,18 +50,18 @@ export default async function Sitemap() {
         <div>
           <section>
             {staticPages.map((page, index) => (
-              <Link key={index} href={page.href}>
+              <a key={index} href={page.href}>
                 {page.title}
-              </Link>
+              </a>
             ))}
           </section>
 
           <section>
             <h2>便利なツール</h2>
             {toolsPages.map((page, index) => (
-              <Link key={index} href={page.href}>
+              <a key={index} href={page.href}>
                 {page.title}
-              </Link>
+              </a>
             ))}
           </section>
 
@@ -74,22 +69,22 @@ export default async function Sitemap() {
             <h2>ブログ</h2>
             <section>
               <h3>
-                <Link href="/blog">タグ一覧</Link>
+                <a href="/blog">タグ一覧</a>
               </h3>
               {tags.map((tag, index) => (
-                <Link key={index} href={`/blog/tags/${tag.id}`}>
+                <a key={index} href={`/blog/tags/${tag.id}`}>
                   #{tag.attributes.name}
-                </Link>
+                </a>
               ))}
             </section>
             <section>
               <h3>
-                <Link href="/blog">最新記事一覧</Link>
+                <a href="/blog">最新記事一覧</a>
               </h3>
               {posts.map((post, index) => (
-                <Link key={index} href={`/blog/${post.id}`}>
+                <a key={index} href={`/blog/${post.id}`}>
                   {post.attributes.title}
-                </Link>
+                </a>
               ))}
             </section>
           </section>
