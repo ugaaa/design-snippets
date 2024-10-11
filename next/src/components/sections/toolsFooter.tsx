@@ -10,7 +10,7 @@ const ToolsFooter = () => {
       <Container
         ball={{
           color: "pink",
-          position: "center",
+          position: "right",
         }}
         hasTitle
       >

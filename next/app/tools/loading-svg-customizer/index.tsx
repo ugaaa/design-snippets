@@ -90,7 +90,7 @@ const SvgPageInner = () => {
   const [size, setSize] = useState(100);
   const [selectedSvgIndex, setSelectedSvgIndex] = useState(0);
 
-  const customizeSvg = (svg) => {
+  const customizeSvg = (svg: any) => {
     return svg
       .replace(/stroke="#000"/g, `stroke="${color}"`)
       .replace(/fill="none"/g, `fill="${background}"`)
@@ -104,7 +104,6 @@ const SvgPageInner = () => {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Loading SVG カスタマイザー</h1>
       {svgs.map((svg, index) => (
         <label key={index} style={{ display: "block" }}>
           <input
@@ -162,7 +161,7 @@ const SvgPageInner = () => {
             step="0.1"
             min="0"
             max="1"
-            onChange={(e) => setOpacity(e.target.value)}
+            onChange={(e) => setOpacity(Number(e.target.value))}
           />
         </label>
         <br />
@@ -171,7 +170,7 @@ const SvgPageInner = () => {
           <input
             type="number"
             value={speed}
-            onChange={(e) => setSpeed(e.target.value)}
+            onChange={(e) => setSpeed(Number(e.target.value))}
           />
         </label>
         <br />
@@ -180,7 +179,7 @@ const SvgPageInner = () => {
           <input
             type="number"
             value={size}
-            onChange={(e) => setSize(e.target.value)}
+            onChange={(e) => setSize(Number(e.target.value))}
           />
         </label>
       </div>

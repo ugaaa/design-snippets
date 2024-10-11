@@ -14,7 +14,7 @@
  *   );
  * };
  */
-
+"use client";
 import { sizes } from "@/components/constants/sizes";
 import React from "react";
 import styled, { CSSProperties, css } from "styled-components";
@@ -96,17 +96,24 @@ export const GridItem = ({
   span = 12,
   spanSp = 6,
   columnGap = "60px",
-  columnGapSp = columnGap,
+  columnGapSp = "30px",
   children,
 }: GridItemPropsType) => {
+  const columnCount = 12 / span;
+  const columnCountSp = 12 / spanSp;
+
   const width =
     span === 12
       ? "100%"
-      : `calc(${(span / 12) * 100}% - ${columnGap} / 6 * ${span})`;
+      : `calc(100% / ${columnCount} - (${columnGap} * ${
+          columnCount - 1
+        } / ${columnCount}))`;
   const widthSp =
     spanSp === 6
       ? "100%"
-      : `calc(${(spanSp / 6) * 100}% - ${columnGapSp} / 3 * ${spanSp})`;
+      : `calc(100% / ${columnCountSp} - (${columnGapSp} * ${
+          columnCountSp - 1
+        } / ${columnCountSp}))`;
   return (
     <GridItemStyled $width={width} $widthSp={widthSp}>
       {children}
@@ -117,8 +124,8 @@ export const GridItem = ({
 const Grid = ({
   columnGap = "60px",
   rowGap = "60px",
-  columnGapSp = columnGap,
-  rowGapSp = rowGap,
+  columnGapSp = "30px",
+  rowGapSp = "30px",
   children,
   style,
   styleSp,

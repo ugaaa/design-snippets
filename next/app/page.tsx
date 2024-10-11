@@ -1,11 +1,11 @@
 import FirstView from "@/components/sections/firstView";
-import Footer from "@/components/layouts/footer";
 import About from "@/components/sections/about";
 import LatestPosts from "@/components/sections/latestPosts";
 import { fetchData } from "@/api/fetchData";
 import { PostType } from "@/types/posts";
 import { TagType } from "@/types/tags";
 import PopularTags from "@/components/sections/popularTags";
+import ToolsFooter from "@/components/sections/toolsFooter";
 
 export default async function Home() {
   let posts: PostType[] = [];
@@ -36,8 +36,11 @@ export default async function Home() {
     <>
       <FirstView />
       <About />
-      <LatestPosts posts={posts} layout="section" />
-      <PopularTags tags={tags} />
+      <ToolsFooter />
+      {tags && tags.length > 0 && <PopularTags tags={tags} />}
+      {posts && posts.length > 0 && (
+        <LatestPosts posts={posts} layout="footer" />
+      )}
     </>
   );
 }

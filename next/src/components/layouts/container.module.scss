@@ -2,11 +2,11 @@
 
 .container {
   width: 100%;
-  max-width: 1440px;
+  max-width: calc(var(--max-width) + var(--spacing-x-base) * 2);
   margin: 0 auto;
-  padding: 100px 30px;
+  padding: 100px var(--spacing-x-base);
   @media screen and (min-width: ($BREAK_POINT * 1px)) {
-    padding: 200px 30px;
+    padding: 200px var(--spacing-x-base);
   }
 
   &.noXPadding {

@@ -1,7 +1,8 @@
-@import '@/styles/mixin';
+@import "@/styles/mixin";
 
 .logo {
-  @include set_vw(font-size, 38);
+  white-space: nowrap;
+  @include set_vw(font-size, 24, 38);
   text-decoration: none;
   &.isLarge {
     @include set_vw(font-size, 38, 126);

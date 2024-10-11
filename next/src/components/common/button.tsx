@@ -9,6 +9,7 @@ type ButtonProps = {
   isSimple?: boolean;
   isOrange?: boolean;
   children: React.ReactNode;
+  onClick?: () => void;
 };
 
 const Button = ({
@@ -16,10 +17,12 @@ const Button = ({
   target = "_self",
   isSimple,
   children,
+  onClick,
 }: ButtonProps) => (
   <Link
     href={href}
     target={target}
+    onClick={onClick}
     className={`${styles.button} ${isSimple ? styles.isSimple : ""}`}
   >
     <span>{children}</span>
@@ -33,10 +36,12 @@ export const LargeButton = ({
   target = "_self",
   isOrange,
   children,
+  onClick,
 }: ButtonProps) => (
   <Link
     href={href}
     target={target}
+    onClick={onClick}
     className={`${styles.largeButton} ${isOrange ? styles.isOrange : ""}`}
   >
     <span>{children}</span>
