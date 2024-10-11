@@ -1,23 +1,31 @@
 # Strapi用のDockerfile
 
-# 1. Base imageの設定
+# Node.js 20ベースのイメージ
 FROM node:20-alpine
 
-# 2. 作業ディレクトリの設定
+# 必要なライブラリをインストール
+RUN apk add --no-cache libc6-compat
+
+# 作業ディレクトリを設定
 WORKDIR /srv/app
 
-# 3. パッケージのインストール
+# パッケージファイルをコピー
 COPY cms/package.json cms/package-lock.json ./
+
+# sharpモジュールのインストールを行う際に正しいアーキテクチャを指定
+RUN npm install --platform=linuxmusl --arch=arm64v8 sharp
+
+# 残りの依存関係をインストール
 RUN npm install
 
-# 4. アプリケーションのソースコードをコピー
+# ソースコードをコピー
 COPY cms .
 
-# 5. 環境変数の設定
+# 環境変数の設定
 ENV NODE_ENV=production
 
-# 6. ポートのエクスポート
+# ポートを開放
 EXPOSE 1337
 
-# 7. アプリケーションの起動
+# アプリケーションの起動
 CMD ["npm", "start"]
