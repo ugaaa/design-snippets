@@ -1,10 +1,8 @@
-# Strapi用のDockerfile
-
 # Node.js 20ベースのイメージ
 FROM node:20-alpine
 
 # 必要なライブラリをインストール
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat python3 make g++ bash vips vips-dev
 
 # 作業ディレクトリを設定
 WORKDIR /srv/app
