@@ -1,38 +1,34 @@
-# Next.js用のDockerfile（Node.js 21ベース）
+# Base image for building
+FROM node:20-alpine AS build
 
-# 1. Base imageの設定
-FROM node:20-alpine
-
-# 2. 作業ディレクトリの設定
+# Set working directory
 WORKDIR /app
 
-# 3. パッケージのインストール
+# Install dependencies
 COPY next/package.json next/package-lock.json ./
 RUN npm install
 
-# 4. アプリケーションのソースコードをコピー
+# Copy source code and build
 COPY next .
-
-# 5. アプリケーションのビルド
 RUN npm run build
 
-# 6. Production readyなイメージの作成
-FROM node:21-alpine
+# Production image
+FROM node:20-alpine
 
-# 7. 環境変数の設定
+# Set environment variable
 ENV NODE_ENV=production
 
-# 8. 作業ディレクトリの設定
+# Set working directory
 WORKDIR /app
 
-# 9. ビルドされたアプリケーションのコピー
-COPY --from=0 /app/public ./public
-COPY --from=0 /app/.next ./.next
-COPY --from=0 /app/node_modules ./node_modules
-COPY --from=0 /app/package.json ./package.json
+# Copy only the necessary files from the build stage
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package.json ./package.json
 
-# 10. ポートのエクスポート
+# Expose port
 EXPOSE 3000
 
-# 11. アプリケーションの起動
+# Start the application
 CMD ["npm", "start"]
