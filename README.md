@@ -11,3 +11,5 @@ http://localhost:1337（管理画面）
 docker 使わずにローカルで開発する場合
 /next＆/strapi 各ディレクトリ配下で実行
 npm run dev
+
+デプロイテスト
