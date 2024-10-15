@@ -31,8 +31,8 @@ const CharCountPageInner = () => {
         </p>
       </article>
 
-      <Grid>
-        <GridItem span={7}>
+      <Grid rowGap="40px">
+        <GridItem span={12}>
           <textarea
             className={styles.textarea}
             value={text}
@@ -40,7 +40,7 @@ const CharCountPageInner = () => {
             placeholder="ここにテキストを入力してください"
           />
         </GridItem>
-        <GridItem span={5}>
+        <GridItem span={12}>
           <div className={styles.charCountContainer}>
             <p className={styles.charCountLabel}>文字数:</p>
             <p className={styles.charCount}>{charCount}</p>
