@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import styles from "./loadingSvgCustomizer.module.scss";
 
 export const svgs = [
   {
@@ -103,95 +104,94 @@ const SvgPageInner = () => {
   const customizedSvg = customizeSvg(svgs[selectedSvgIndex].svg);
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      {svgs.map((svg, index) => (
-        <label key={index} style={{ display: "block" }}>
-          <input
-            type="radio"
-            name="svg"
-            value={index}
-            checked={selectedSvgIndex === index}
-            onChange={() => setSelectedSvgIndex(index)}
-          />
-          {svg.name}
-        </label>
-      ))}
-      <div
-        style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
-      >
-        {svgs.map((svg, index) => (
-          <div key={index} style={{ margin: "20px", textAlign: "center" }}>
-            <div
-              style={{
-                // width: `${size}px`,
-                // height: `${size}px`,
-                width: "50px",
-                height: "50px",
-                opacity: opacity,
-              }}
-              dangerouslySetInnerHTML={{ __html: customizeSvg(svg.svg) }}
+    <div className={styles.container}>
+      <div className={styles.controller}>
+        <div>
+          <label>
+            Color:
+            <input
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
             />
+          </label>
+          <br />
+          <label>
+            Background:
+            <input
+              type="color"
+              value={background}
+              onChange={(e) => setBackground(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            Opacity:
+            <input
+              type="number"
+              value={opacity}
+              step="0.1"
+              min="0"
+              max="1"
+              onChange={(e) => setOpacity(Number(e.target.value))}
+            />
+          </label>
+          <br />
+          <label>
+            Speed (seconds):
+            <input
+              type="number"
+              value={speed}
+              onChange={(e) => setSpeed(Number(e.target.value))}
+            />
+          </label>
+          <br />
+          <label>
+            Size (px):
+            <input
+              type="number"
+              value={size}
+              onChange={(e) => setSize(Number(e.target.value))}
+            />
+          </label>
+        </div>
+        <CopyToClipboard text={customizedSvg}>
+          <button>Copy SVG</button>
+        </CopyToClipboard>
+        <a
+          href={`data:image/svg+xml;utf8,${encodeURIComponent(customizedSvg)}`}
+          download="loader.svg"
+        >
+          <button>Download SVG</button>
+        </a>
+      </div>
+
+      <div className={styles.icons}>
+        {svgs.map((svg, index) => (
+          <div className={styles.icon} key={index}>
+            <input
+              type="radio"
+              name="svg"
+              value={index}
+              checked={selectedSvgIndex === index}
+              onChange={() => setSelectedSvgIndex(index)}
+            />
+            <label>
+              {svg.name}
+              <div
+                style={{
+                  // width: `${size}px`,
+                  // height: `${size}px`,
+                  width: "50px",
+                  height: "50px",
+                  opacity: opacity,
+                }}
+                dangerouslySetInnerHTML={{ __html: customizeSvg(svg.svg) }}
+              />
+            </label>
           </div>
         ))}
       </div>
-      <div style={{ margin: "20px" }}>
-        <label>
-          Color:
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Background:
-          <input
-            type="color"
-            value={background}
-            onChange={(e) => setBackground(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Opacity:
-          <input
-            type="number"
-            value={opacity}
-            step="0.1"
-            min="0"
-            max="1"
-            onChange={(e) => setOpacity(Number(e.target.value))}
-          />
-        </label>
-        <br />
-        <label>
-          Speed (seconds):
-          <input
-            type="number"
-            value={speed}
-            onChange={(e) => setSpeed(Number(e.target.value))}
-          />
-        </label>
-        <br />
-        <label>
-          Size (px):
-          <input
-            type="number"
-            value={size}
-            onChange={(e) => setSize(Number(e.target.value))}
-          />
-        </label>
-      </div>
-      <CopyToClipboard text={customizedSvg}>
-        <button>Copy SVG</button>
-      </CopyToClipboard>
-      <a
-        href={`data:image/svg+xml;utf8,${encodeURIComponent(customizedSvg)}`}
-        download="loader.svg"
-      >
-        <button>Download SVG</button>
-      </a>
     </div>
   );
 };

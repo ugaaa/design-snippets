@@ -4,9 +4,9 @@
   width: 100%;
   max-width: calc(var(--max-width) + var(--spacing-x-base) * 2);
   margin: 0 auto;
-  padding: 100px var(--spacing-x-base);
+  padding: 40px var(--spacing-x-base) 100px;
   @media screen and (min-width: ($BREAK_POINT * 1px)) {
-    padding: 200px var(--spacing-x-base);
+    padding: 80px var(--spacing-x-base) 200px;
   }
 
   &.noXPadding {
@@ -24,9 +24,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
     @media screen and (min-width: ($BREAK_POINT * 1px)) {
-      gap: 100px;
+      gap: 80px;
     }
   }
 }
@@ -35,6 +35,10 @@
   position: relative;
   &::after {
     position: absolute;
+    top: 0;
+    @media screen and (min-width: ($BREAK_POINT * 1px)) {
+      top: calc(var(--header-height) * -1);
+    }
     width: 200vw;
     max-width: 2280px;
     border-radius: 50%;
@@ -44,12 +48,10 @@
     content: "";
   }
   &.center::after {
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -10%);
   }
   &.right::after {
-    top: -100px;
     left: -100px;
     transform: translate(0, -10%);
   }
@@ -65,7 +67,7 @@
 
   &.isInview {
     &.center::after {
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 0);
     }
     &.right::after {
       transform: translate(0, 0);

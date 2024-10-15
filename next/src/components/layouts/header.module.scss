@@ -2,11 +2,17 @@
 
 .headerContainer {
   height: var(--header-height);
+  &.isScrolled {
+    .header {
+      background: var(--color-yellow);
+    }
+  }
   &.isHome {
     height: 0;
     .header {
       transform: translateY(-100%);
       animation: showDown 0.5s 5s forwards;
+      background: var(--color-yellow);
     }
     &.isScrolled {
       .header {
@@ -23,7 +29,6 @@
   width: 100%;
   z-index: 1;
   transition: all 0.5s;
-  background: var(--color-yellow);
 }
 
 .headerInner {

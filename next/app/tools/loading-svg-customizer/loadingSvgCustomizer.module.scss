@@ -1,0 +1,42 @@
+.container {
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 1fr 4fr;
+
+  .controller {
+    border-radius: var(--border-radius);
+    background: var(--color-yellow);
+  }
+
+  .icons {
+    position: sticky;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+  }
+
+  .icon {
+    position: relative;
+    aspect-ratio: 1/1;
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      &:checked + label {
+        border: solid 4px var(--color-yellow);
+      }
+    }
+    label {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: var(--border-radius);
+      border: solid 4px #fff;
+    }
+  }
+}
