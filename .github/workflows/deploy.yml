@@ -14,7 +14,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. サーバーにSSHで接続してデプロイする
+      # 2. Node.js環境を設定してビルド
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # 3. 依存関係をインストール
+      - name: Install dependencies
+        run: |
+          cd next
+          npm install
+
+      # 4. ビルドを実行
+      - name: Build project
+        run: |
+          cd next
+          npm run build
+
+      # 5. サーバーにSSHで接続してデプロイ
       - name: Deploy to Server
         uses: appleboy/ssh-action@v0.1.5
         with:
@@ -24,5 +42,5 @@ jobs:
           script: |
             cd ~/design-snippets
             git pull origin main
-            sudo docker-compose down
-            sudo docker-compose up -d --build
+            sudo docker-compose build --no-cache
+            sudo docker-compose up -d

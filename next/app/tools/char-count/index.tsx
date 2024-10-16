@@ -31,7 +31,7 @@ const CharCountPageInner = () => {
         </p>
       </article>
 
-      <Grid rowGap="40px">
+      <Grid rowGap="10px">
         <GridItem span={12}>
           <textarea
             className={styles.textarea}
