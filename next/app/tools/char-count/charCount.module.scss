@@ -5,11 +5,11 @@
   max-width: 800px;
   margin: 0 auto;
   .text {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 2;
     @media screen and (min-width: ($BREAK_POINT * 1px)) {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
   }
 
