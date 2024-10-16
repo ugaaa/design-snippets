@@ -8,10 +8,10 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Copy build results
-COPY ./.next ./.next
-COPY ./public ./public
-COPY ./node_modules ./node_modules
-COPY ./package.json ./package.json
+COPY next/.next ./.next
+COPY next/public ./public
+COPY next/node_modules ./node_modules
+COPY next/package.json ./package.json
 
 # Expose port
 EXPOSE 3000
