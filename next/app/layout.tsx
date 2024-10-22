@@ -5,6 +5,7 @@ import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import ToolsFooter from "@/components/sections/toolsFooter";
 import { useSearchParams } from "next/navigation";
+import Head from "next/head";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -20,6 +21,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <Head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BWYEBLHY1N"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BWYEBLHY1N');
+          `,
+          }}
+        />
+      </Head>
       <body className={notoSansJP.className}>
         <div className="site-wrapper">
           <Header />
