@@ -5,8 +5,9 @@ import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import ToolsFooter from "@/components/sections/toolsFooter";
 import { useSearchParams } from "next/navigation";
-import Head from "next/head";
+import Script from "next/script";
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,24 +22,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <Head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-BWYEBLHY1N"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-BWYEBLHY1N');
-          `,
-          }}
-        />
-      </Head>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+ 
+           gtag('config', '${GA_ID}');
+           `,
+        }}
+      />
       <body className={notoSansJP.className}>
         <div className="site-wrapper">
           <Header />
