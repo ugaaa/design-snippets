@@ -18,12 +18,6 @@ const Footer = () => (
             <li>
               <Link href="/">HOME</Link>
             </li>
-            <li>
-              <Link href="/blog">BLOG</Link>
-            </li>
-            <li>
-              <Link href="/sitemap">SITEMAP</Link>
-            </li>
           </ul>
         </nav>
 
@@ -39,7 +33,7 @@ const Footer = () => (
               <br />
               こんなのあったら便利なのになあを詰め込んだ完全に趣味で作ったサイトです。
               <br />
-              勉強がてらNext.js/Strapiで作ったよ。
+              Next.jsで作ったよ。
             </p>
             <ul className={styles.links}>
               <li>

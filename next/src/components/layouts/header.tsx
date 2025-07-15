@@ -93,15 +93,6 @@ const Header = () => {
 
             <nav className={`gnav ${isMenuOpen ? "open" : ""} hidden md:block`}>
               <ul className="flex flex-col md:flex-row list-none gap-5 md:gap-15 m-0 md:items-center">
-                <li>
-                  <Link
-                    className={`${montserrat.className} flex items-center bg-transparent border-none text-2xl text-white md:hover:text-color-green transition-colors duration-300`}
-                    onClick={handleLinkClick}
-                    href="/blog"
-                  >
-                    BLOG
-                  </Link>
-                </li>
                 {isPC && (
                   <li>
                     <button
