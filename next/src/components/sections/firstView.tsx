@@ -2,7 +2,6 @@
 
 import MovingBouncingBalls from "@/components/snippets/movingBouncingBalls";
 import Logo from "@/components/common/logo";
-import styles from "./firstView.module.scss";
 import { Anonymous_Pro } from "next/font/google";
 import { useEffect, useState } from "react";
 
@@ -17,16 +16,21 @@ const FirstView = () => {
   }, []);
 
   return (
-    <section
-      className={`${styles.firstView} ${isLoaded ? styles.isLoaded : ""}`}
-    >
-      <div className={styles.logo}>
+    <section className="relative w-full min-h-[100lvh] flex flex-col items-center justify-center overflow-hidden bg-white">
+      <div className={`${isLoaded ? "animate-fall-bounce" : "opacity-0"}`}>
         <Logo as="h1" />
       </div>
-      <p className={`${anonymousPro.className} ${styles.tagline}`}>
-        <span>{tagline}</span>
+      <p className={`${anonymousPro.className} inline-block mt-10`}>
+        <span
+          className={`
+            w-0 text-tagline inline-block border-r-2 border-transparent whitespace-nowrap overflow-hidden
+            ${isLoaded ? "animate-typing-with-caret" : ""}
+          `}
+        >
+          {tagline}
+        </span>
       </p>
-      <div className={styles.canvas}>
+      <div className="fixed top-0 left-0 w-full h-full mix-blend-multiply">
         <MovingBouncingBalls />
       </div>
     </section>

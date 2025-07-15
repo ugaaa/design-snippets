@@ -1,151 +1,151 @@
-@import "@/styles/variables";
+// @import "@/styles/variables";
 
-.headerContainer {
-  height: var(--header-height);
-  &.isScrolled {
-    .header {
-      background: var(--color-yellow);
-    }
-  }
-  &.isHome {
-    height: 0;
-    .header {
-      transform: translateY(-100%);
-      animation: showDown 0.5s 5s forwards;
-      background: var(--color-yellow);
-    }
-    &.isScrolled {
-      .header {
-        transform: translateY(0);
-      }
-    }
-  }
-}
+// .headerContainer {
+//   height: var(--header-height);
+//   &.isScrolled {
+//     .header {
+//       background: var(--color-yellow);
+//     }
+//   }
+//   &.isHome {
+//     height: 0;
+//     .header {
+//       transform: translateY(-100%);
+//       animation: showDown 0.5s 5s forwards;
+//       background: var(--color-yellow);
+//     }
+//     &.isScrolled {
+//       .header {
+//         transform: translateY(0);
+//       }
+//     }
+//   }
+// }
 
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  transition: all 0.5s;
-}
+// .header {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   z-index: 1;
+//   transition: all 0.5s;
+// }
 
-.headerInner {
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// .headerInner {
+//   height: var(--header-height);
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
-.gnav {
-  display: none;
-  &.isOpen {
-    display: block;
-  }
-  @media screen and (max-width: ($BREAK_POINT * 1px - 1px)) {
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: calc(100vh - var(--header-height));
-    background: #fff;
-    border-bottom: solid 10px var(--color-yellow);
-    padding: var(--spacing-x-base);
-  }
-  @media screen and (min-width: ($BREAK_POINT * 1px)) {
-    display: block;
-  }
-  ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    margin: 0;
-    flex-direction: column;
-    @media screen and (min-width: ($BREAK_POINT * 1px)) {
-      flex-direction: row;
-      align-items: center;
-      gap: 60px;
-    }
-  }
-  .button {
-    display: flex;
-    align-items: center;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    @media screen and (min-width: ($BREAK_POINT * 1px)) {
-      &:not(:hover) {
-        color: #fff;
-      }
-    }
-  }
-}
+// .gnav {
+//   display: none;
+//   &.isOpen {
+//     display: block;
+//   }
+//   @media screen and (max-width: ($BREAK_POINT * 1px - 1px)) {
+//     position: absolute;
+//     top: var(--header-height);
+//     left: 0;
+//     right: 0;
+//     width: 100%;
+//     height: calc(100vh - var(--header-height));
+//     background: #fff;
+//     border-bottom: solid 10px var(--color-yellow);
+//     padding: var(--spacing-x-base);
+//   }
+//   @media screen and (min-width: ($BREAK_POINT * 1px)) {
+//     display: block;
+//   }
+//   ul {
+//     display: flex;
+//     list-style: none;
+//     gap: 20px;
+//     margin: 0;
+//     flex-direction: column;
+//     @media screen and (min-width: ($BREAK_POINT * 1px)) {
+//       flex-direction: row;
+//       align-items: center;
+//       gap: 60px;
+//     }
+//   }
+//   .button {
+//     display: flex;
+//     align-items: center;
+//     background: transparent;
+//     border: none;
+//     font-size: 1.5rem;
+//     @media screen and (min-width: ($BREAK_POINT * 1px)) {
+//       &:not(:hover) {
+//         color: #fff;
+//       }
+//     }
+//   }
+// }
 
-.navBtn {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  background: none;
-  border: none;
-  span {
-    position: absolute;
-    display: block;
-    transition: all 0.3s;
-    width: 100%;
-    height: 2px;
-    border-radius: 1px;
-    background: #fff;
-    &:nth-child(1) {
-      top: 10px;
-    }
-    &:nth-child(2) {
-      bottom: 10px;
-    }
-  }
+// .navBtn {
+//   position: relative;
+//   width: 30px;
+//   height: 30px;
+//   background: none;
+//   border: none;
+//   span {
+//     position: absolute;
+//     display: block;
+//     transition: all 0.3s;
+//     width: 100%;
+//     height: 2px;
+//     border-radius: 1px;
+//     background: #fff;
+//     &:nth-child(1) {
+//       top: 10px;
+//     }
+//     &:nth-child(2) {
+//       bottom: 10px;
+//     }
+//   }
 
-  &.isOpen {
-    span {
-      &:nth-child(1) {
-        top: 14px;
-        transform: rotate(30deg);
-      }
-      &:nth-child(2) {
-        bottom: 14px;
-        transform: rotate(-30deg);
-      }
-    }
-  }
-}
+//   &.isOpen {
+//     span {
+//       &:nth-child(1) {
+//         top: 14px;
+//         transform: rotate(30deg);
+//       }
+//       &:nth-child(2) {
+//         bottom: 14px;
+//         transform: rotate(-30deg);
+//       }
+//     }
+//   }
+// }
 
-.toolsContainer {
-  opacity: 0;
-  margin: 20px calc(var(--spacing-x-base) * -1) 0;
-  transition: opacity 0.3s ease-in-out;
-  &.fadeIn {
-    opacity: 1;
-  }
-  &.fadeOut {
-    opacity: 0;
-  }
-  @media screen and (min-width: ($BREAK_POINT * 1px)) {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-lightgray);
-    border-bottom: 10px solid var(--color-yellow);
-    padding: 40px;
-    margin: 0;
-  }
-}
+// .toolsContainer {
+//   opacity: 0;
+//   margin: 20px calc(var(--spacing-x-base) * -1) 0;
+//   transition: opacity 0.3s ease-in-out;
+//   &.fadeIn {
+//     opacity: 1;
+//   }
+//   &.fadeOut {
+//     opacity: 0;
+//   }
+//   @media screen and (min-width: ($BREAK_POINT * 1px)) {
+//     position: absolute;
+//     top: 100%;
+//     left: 0;
+//     right: 0;
+//     background: var(--color-lightgray);
+//     border-bottom: 10px solid var(--color-yellow);
+//     padding: 40px;
+//     margin: 0;
+//   }
+// }
 
-@keyframes showDown {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+// @keyframes showDown {
+//   0% {
+//     transform: translateY(-100%);
+//   }
+//   100% {
+//     transform: translateY(0);
+//   }
+// }

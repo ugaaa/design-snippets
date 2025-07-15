@@ -1,20 +1,6 @@
 @import "@/styles/mixin";
 
 .firstView {
-  position: relative;
-  width: 100%;
-  min-height: 100lvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  overflow: hidden;
-  background: #fff;
-
-  .logo {
-    opacity: 0;
-  }
-
   .tagline {
     display: inline-block;
     margin-top: 40px;
@@ -37,9 +23,6 @@
   }
 
   &.isLoaded {
-    .logo {
-      animation: 1s fall-bounce forwards;
-    }
     .tagline {
       span {
         animation: typing 2s steps(27, end) 0.5s forwards,

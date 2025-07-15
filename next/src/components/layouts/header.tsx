@@ -3,7 +3,6 @@
 import { Montserrat } from "next/font/google";
 import Logo from "@/components/common/logo";
 import Container from "@/components/layouts/container";
-import Link from "next/link";
 import IcoArrow from "../svgs/icoArrow";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -77,12 +76,20 @@ const Header = () => {
   return (
     <header
       ref={ref}
-      className={`h-header-sm md:h-header-lg ${isVisible ? "visible" : ""} ${
-        pathname === "/" ? "home-header" : ""
-      } ${isScrolled ? "scrolled" : ""}`}
+      className={`${isVisible ? "visible h-header-sm md:h-header-lg " : ""} ${
+        pathname === "/" ? "h-0" : ""
+      }`}
     >
       <div
-        className="fixed top-0 left-0 w-full z-10 transition-all duration-500 header-bg"
+        className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${
+          isScrolled || pathname === "/" ? "bg-yellow" : ""
+        } ${
+          pathname === "/"
+            ? `-translate-y-full animate-show-down ${
+                isScrolled ? "translate-y-0" : ""
+              }`
+            : ""
+        }`}
         onMouseLeave={handleMouseLeave}
       >
         <Container disabledYPadding>
@@ -92,7 +99,7 @@ const Header = () => {
             </div>
 
             <nav className={`gnav ${isMenuOpen ? "open" : ""} hidden md:block`}>
-              <ul className="flex flex-col md:flex-row list-none gap-5 md:gap-15 m-0 md:items-center">
+              <ul className="flex flex-col md:flex-row list-none gap-5 md:gap-10 m-0 md:items-center">
                 {isPC && (
                   <li>
                     <button
@@ -109,7 +116,7 @@ const Header = () => {
               </ul>
               {isVisible && (
                 <div
-                  className={`tools-container ${animationClass} opacity-0 mt-5 mx-[-30px] transition-opacity duration-300 ease-in-out md:absolute md:top-full md:left-0 md:right-0 md:bg-color-lightgray md:border-b-10 md:border-color-yellow md:p-10 md:m-0`}
+                  className={`tools-container ${animationClass} opacity-0 mt-5 mx-[-30px] transition-opacity duration-300 ease-in-out md:absolute md:top-full md:left-0 md:right-0 md:bg-color-lightgray md:border-b-[10px] md:border-yellow md:p-10 md:m-0`}
                 >
                   <Container disabledYPadding>
                     <Tools isSmall onClick={handleLinkClick} />
