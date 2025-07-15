@@ -10,25 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. コードをチェックアウト
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # 2. Node.js環境を設定してビルド
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      # 3. 依存関係をインストール
-      - name: Install dependencies
-        run: npm install
-
-      # 4. ビルドを実行
-      - name: Build project
-        run: npm run build
-
-      # 5. サーバーにSSHで接続してデプロイ
+      # 1. サーバーにSSHで接続してデプロイ
       - name: Deploy to Server
         uses: appleboy/ssh-action@v0.1.5
         with:
