@@ -11,7 +11,6 @@
   --color-green: #4caf50;
   --color-orange: #ff5722;
   --color-lightgray: #fafafa;
-  --font-size-base: 13px;
   --line-height-base: 1.5;
   --border-radius: 30px;
   --hover-duration: 0.5s;
@@ -22,7 +21,6 @@
 
 @media screen and (min-width: 780px) {
   :root {
-    --font-size-base: 16px;
     --header-height: 100px;
   }
 }
@@ -66,13 +64,8 @@
 
 @media screen and (min-width: 780px) {
   :root {
-    --font-size-base: 16px;
     --header-height: 100px;
   }
-}
-
-html {
-  font-size: var(--font-size-base);
 }
 
 body {

@@ -116,7 +116,7 @@ const Header = () => {
               </ul>
               {isVisible && (
                 <div
-                  className={`tools-container ${animationClass} opacity-0 mt-5 mx-[-30px] transition-opacity duration-300 ease-in-out md:absolute md:top-full md:left-0 md:right-0 md:bg-color-lightgray md:border-b-[10px] md:border-yellow md:p-10 md:m-0`}
+                  className={`tools-container ${animationClass} opacity-0 mt-5 mx-[-30px] transition-opacity duration-300 ease-in-out md:absolute md:top-full md:left-0 md:right-0 md:bg-lightgray md:border-b-[10px] md:border-yellow md:p-10 md:m-0`}
                 >
                   <Container disabledYPadding>
                     <Tools isSmall onClick={handleLinkClick} />
