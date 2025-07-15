@@ -17,24 +17,29 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          command_timeout: 10m
           script: |
             set -e
+            echo "🚀 Starting deployment..."
             cd ~/design-snippets
+
+            echo "📦 Updating code..."
             git pull origin main
+
+            echo "📋 Installing dependencies..."
             npm install
+
+            echo "🔨 Building application..."
             npm run build
 
-            # outディレクトリの存在確認
-            if [ ! -d "out" ]; then
-              echo "❌ out directory not found"
-              exit 1
-            fi
+            echo "📁 Checking output directory..."
+            ls -la out/ || { echo "❌ out directory not found"; exit 1; }
 
-            # 既存のNext.jsプロセスを停止（不要になった）
+            echo "🔄 Stopping existing processes..."
             pkill -f "next start" || true
 
-            # 静的ファイルをNginxのドキュメントルートにコピー（sudoなし）
+            echo "📋 Copying files..."
             rm -rf /var/www/html/*
             cp -r out/* /var/www/html/
 
-            echo "✅ Static files deployed successfully"
+            echo "✅ Deployment completed successfully!"
