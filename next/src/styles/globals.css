@@ -1,12 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --color-black-rgb: 0, 0, 0;
   --color-black: #000;
-  --color-yellow: #FFC107;
-  --color-pink: #E91E63;
-  --color-blue: #03A9F4;
-  --color-green: #4CAF50;
-  --color-orange: #FF5722;
-  --color-lightgray: #FAFAFA;
+  --color-yellow: #ffc107;
+  --color-pink: #e91e63;
+  --color-blue: #03a9f4;
+  --color-green: #4caf50;
+  --color-orange: #ff5722;
+  --color-lightgray: #fafafa;
   --font-size-base: 13px;
   --line-height-base: 1.5;
   --border-radius: 30px;
@@ -14,6 +18,66 @@
   --header-height: 60px;
   --spacing-x-base: 30px;
   --max-width: 1280px;
+}
+
+@media screen and (min-width: 780px) {
+  :root {
+    --font-size-base: 16px;
+    --header-height: 100px;
+  }
+}
+
+@layer components {
+  .home-header {
+    @apply h-0;
+  }
+  
+  .home-header .header-bg {
+    @apply -translate-y-full animate-show-down bg-color-yellow;
+  }
+  
+  .home-header.scrolled .header-bg {
+    @apply translate-y-0;
+  }
+  
+  .scrolled .header-bg {
+    @apply bg-color-yellow;
+  }
+  
+  .gnav {
+    @apply absolute top-header-sm left-0 right-0 w-full bg-white border-b-10 border-color-yellow p-spacing-x;
+    height: calc(100vh - var(--header-height));
+  }
+  
+  @media screen and (min-width: 780px) {
+    .gnav {
+      @apply static top-auto left-auto right-auto w-auto bg-transparent border-0 p-0 h-auto;
+    }
+  }
+  
+  .gnav.open {
+    @apply block;
+  }
+  
+  .nav-btn.open span:nth-child(1) {
+    @apply top-3.5 rotate-[30deg];
+  }
+  
+  .nav-btn.open span:nth-child(2) {
+    @apply bottom-3.5 rotate-[-30deg];
+  }
+  
+  .nav-btn.open span:nth-child(3) {
+    @apply top-3.5 rotate-[-30deg];
+  }
+  
+  .tools-container.fadeIn {
+    @apply opacity-100;
+  }
+  
+  .tools-container.fadeOut {
+    @apply opacity-0;
+  }
 }
 
 @media screen and (min-width: 780px) {

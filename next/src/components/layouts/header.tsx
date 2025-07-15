@@ -3,7 +3,6 @@
 import { Montserrat } from "next/font/google";
 import Logo from "@/components/common/logo";
 import Container from "@/components/layouts/container";
-import styles from "./header.module.scss";
 import Link from "next/link";
 import IcoArrow from "../svgs/icoArrow";
 import { useEffect, useState } from "react";
@@ -78,26 +77,26 @@ const Header = () => {
   return (
     <header
       ref={ref}
-      className={`${styles.headerContainer} ${
-        isVisible ? styles.isVisible : ""
-      } ${pathname === "/" ? styles.isHome : ""} ${
-        isScrolled ? styles.isScrolled : ""
+      className={`h-header-sm md:h-header-lg ${
+        isVisible ? "visible" : ""
+      } ${pathname === "/" ? "home-header" : ""} ${
+        isScrolled ? "scrolled" : ""
       }`}
     >
-      <div className={styles.header} onMouseLeave={handleMouseLeave}>
+      <div className="fixed top-0 left-0 w-full z-10 transition-all duration-500 header-bg" onMouseLeave={handleMouseLeave}>
         <Container disabledYPadding>
-          <div className={styles.headerInner}>
-            <div className={styles.logo}>
+          <div className="h-header-sm md:h-header-lg flex justify-between items-center">
+            <div>
               <Logo isWhite href="/" />
             </div>
 
             <nav
-              className={`${styles.gnav} ${isMenuOpen ? styles.isOpen : ""}`}
+              className={`gnav ${isMenuOpen ? "open" : ""} hidden md:block`}
             >
-              <ul>
+              <ul className="flex flex-col md:flex-row list-none gap-5 md:gap-15 m-0 md:items-center">
                 <li>
                   <Link
-                    className={`${montserrat.className} ${styles.button}`}
+                    className={`${montserrat.className} flex items-center bg-transparent border-none text-2xl text-white md:hover:text-color-green transition-colors duration-300`}
                     onClick={handleLinkClick}
                     href="/blog"
                   >
@@ -108,7 +107,7 @@ const Header = () => {
                   <li>
                     <button
                       type="button"
-                      className={`${montserrat.className} ${styles.button}`}
+                      className={`${montserrat.className} flex items-center bg-transparent border-none text-2xl text-white md:hover:text-color-green transition-colors duration-300`}
                       onMouseOver={handleMouseOver}
                       onClick={handleToolsClick}
                     >
@@ -120,9 +119,7 @@ const Header = () => {
               </ul>
               {isVisible && (
                 <div
-                  className={`${
-                    styles.toolsContainer
-                  } ${`${styles.toolsContainer} ${styles[animationClass]}`}`}
+                  className={`tools-container ${animationClass} opacity-0 mt-5 mx-[-30px] transition-opacity duration-300 ease-in-out md:absolute md:top-full md:left-0 md:right-0 md:bg-color-lightgray md:border-b-10 md:border-color-yellow md:p-10 md:m-0`}
                 >
                   <Container disabledYPadding>
                     <Tools isSmall onClick={handleLinkClick} />
@@ -135,12 +132,12 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => setMenuOpen(!isMenuOpen)}
-                className={`${styles.navBtn} ${
-                  isMenuOpen ? styles.isOpen : ""
+                className={`nav-btn relative w-8 h-8 bg-transparent border-none ${
+                  isMenuOpen ? "open" : ""
                 }`}
               >
-                <span />
-                <span />
+                <span className="absolute block transition-all duration-300 w-full h-0.5 rounded-sm bg-white top-2.5" />
+                <span className="absolute block transition-all duration-300 w-full h-0.5 rounded-sm bg-white bottom-2.5" />
               </button>
             )}
 
