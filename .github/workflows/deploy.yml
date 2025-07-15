@@ -18,14 +18,23 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e
             cd ~/design-snippets
             git pull origin main
             npm install
             npm run build
+
+            # outディレクトリの存在確認
+            if [ ! -d "out" ]; then
+              echo "❌ out directory not found"
+              exit 1
+            fi
+
             # 既存のNext.jsプロセスを停止（不要になった）
             pkill -f "next start" || true
-            # 静的ファイルをNginxのドキュメントルートにコピー
-            sudo rm -rf /var/www/html/*
-            sudo cp -r out/* /var/www/html/
-            sudo chown -R www-data:www-data /var/www/html/
+
+            # 静的ファイルをNginxのドキュメントルートにコピー（sudoなし）
+            rm -rf /var/www/html/*
+            cp -r out/* /var/www/html/
+
             echo "✅ Static files deployed successfully"
