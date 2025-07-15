@@ -85,10 +85,10 @@ export const GridItemStyled = styled.div<{
   $width: string;
   $widthSp: string;
 }>`
-  flex: 0 0 ${({ $width }) => $width};
+  width: ${({ $width }) => $width};
 
   @media (max-width: ${sizes.breakPoint}px) {
-    flex: 0 0 ${({ $widthSp }) => $widthSp};
+    width: ${({ $widthSp }) => $widthSp};
   }
 `;
 

@@ -6,6 +6,50 @@
   .controller {
     border-radius: var(--border-radius);
     background: var(--color-yellow);
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(
+        to right,
+        var(--color-pink) 0%,
+        var(--color-pink) 50%,
+        #ddd 50%,
+        #ddd 100%
+      );
+      border-radius: 3px;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-pink);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-pink);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="range"]:hover::-webkit-slider-thumb {
+      background-color: var(--color-pink);
+    }
+
+    input[type="range"]:hover::-moz-range-thumb {
+      background-color: var(--color-pink);
+    }
   }
 
   .icons {

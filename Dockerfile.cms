@@ -1,4 +1,4 @@
-# Node.js 20ベースのイメージ
+# Production image
 FROM node:20-alpine
 
 # 必要なライブラリをインストール
@@ -10,14 +10,14 @@ WORKDIR /srv/app
 # パッケージファイルをコピー
 COPY cms/package.json cms/package-lock.json ./
 
-# sharpモジュールのインストールを行う際に正しいアーキテクチャを指定
-RUN npm install --platform=linuxmusl --arch=arm64v8 sharp
-
-# 残りの依存関係をインストール
-RUN npm install
+# 依存関係をインストール
+RUN npm ci
 
 # ソースコードをコピー
-COPY cms .
+COPY cms/ .
+
+# アプリケーションをビルド
+RUN npm run build
 
 # 環境変数の設定
 ENV NODE_ENV=production

@@ -1,10 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styles from "./loadingSvgCustomizer.module.scss";
+import Grid, { GridItem } from "@/components/layouts/grid";
 
 export const svgs = [
+  {
+    name: "Circle Loader",
+    svg: `<svg viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="35" stroke="#000" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="31.4 31.4">
+    <animateTransform 
+      attributeName="transform" 
+      type="rotate" 
+      from="0 50 50" 
+      to="360 50 50" 
+      dur="1s" 
+      repeatCount="indefinite" />
+  </circle>
+</svg>`,
+  },
   {
     name: "Circle Loader",
     svg: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" strokeWidth="5" stroke="#000" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="2s" repeatCount="indefinite"/></circle></svg>`,
@@ -88,8 +103,10 @@ const SvgPageInner = () => {
   const [background, setBackground] = useState("none");
   const [opacity, setOpacity] = useState(1);
   const [speed, setSpeed] = useState(2);
-  const [size, setSize] = useState(100);
+  const [size, setSize] = useState(5);
   const [selectedSvgIndex, setSelectedSvgIndex] = useState(0);
+
+  console.log(color, background, speed, speed);
 
   const customizeSvg = (svg: any) => {
     return svg
@@ -106,55 +123,78 @@ const SvgPageInner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.controller}>
-        <div>
-          <label>
-            Color:
+        <Grid rowGap="20px" columnGap="20px">
+          <GridItem span={5} spanSp={6}>
+            <label>Color</label>
+          </GridItem>
+
+          <GridItem span={7} spanSp={6}>
             <input
               type="color"
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
-          </label>
-          <br />
-          <label>
-            Background:
+            <input
+              type="text"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </GridItem>
+
+          <GridItem span={5} spanSp={6}>
+            <label>Background</label>
+          </GridItem>
+          <GridItem span={7} spanSp={6}>
             <input
               type="color"
               value={background}
               onChange={(e) => setBackground(e.target.value)}
             />
-          </label>
-          <br />
-          <label>
-            Opacity:
             <input
-              type="number"
-              value={opacity}
-              step="0.1"
-              min="0"
-              max="1"
-              onChange={(e) => setOpacity(Number(e.target.value))}
+              type="text"
+              value={background}
+              onChange={(e) => setBackground(e.target.value)}
             />
-          </label>
-          <br />
-          <label>
-            Speed (seconds):
+          </GridItem>
+
+          <GridItem span={5} spanSp={6}>
+            <label>Speed (seconds)</label>
+          </GridItem>
+          <GridItem span={7} spanSp={6}>
             <input
-              type="number"
+              type="range"
+              min="0.1"
+              max="20"
+              step="0.1"
               value={speed}
+              style={{
+                background: `linear-gradient(to right, var(--color-pink) 0%, var(--color-pink) ${
+                  (speed / 20) * 100
+                }%, #ddd ${(speed / 20) * 100}%, #ddd 100%)`,
+              }}
               onChange={(e) => setSpeed(Number(e.target.value))}
             />
-          </label>
-          <br />
-          <label>
-            Size (px):
+          </GridItem>
+
+          <GridItem span={5} spanSp={6}>
+            <label>Size (px)</label>
+          </GridItem>
+          <GridItem span={7} spanSp={6}>
             <input
-              type="number"
+              type="range"
+              min="1"
+              max="10"
+              step="1"
               value={size}
+              style={{
+                background: `linear-gradient(to right, var(--color-pink) 0%, var(--color-pink) ${
+                  size * 10
+                }%, #ddd ${size * 10}%, #ddd 100%)`,
+              }}
               onChange={(e) => setSize(Number(e.target.value))}
             />
-          </label>
-        </div>
+          </GridItem>
+        </Grid>
         <CopyToClipboard text={customizedSvg}>
           <button>Copy SVG</button>
         </CopyToClipboard>
