@@ -22,8 +22,10 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            # 既存のNext.jsプロセスを停止
+            # 既存のNext.jsプロセスを停止（不要になった）
             pkill -f "next start" || true
-            # Next.jsサーバーをバックグラウンドで起動（port 3000）
-            nohup npm start > ~/design-snippets.log 2>&1 &
-            echo "✅ Next.js server started on localhost:3000"
+            # 静的ファイルをNginxのドキュメントルートにコピー
+            sudo rm -rf /var/www/html/*
+            sudo cp -r out/* /var/www/html/
+            sudo chown -R www-data:www-data /var/www/html/
+            echo "✅ Static files deployed successfully"
