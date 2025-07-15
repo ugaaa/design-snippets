@@ -22,3 +22,8 @@ jobs:
             git pull origin main
             npm install
             npm run build
+            # 既存のNext.jsプロセスを停止
+            pkill -f "next start" || true
+            # Next.jsサーバーをバックグラウンドで起動（port 3000）
+            nohup npm start > ~/design-snippets.log 2>&1 &
+            echo "✅ Next.js server started on localhost:3000"
