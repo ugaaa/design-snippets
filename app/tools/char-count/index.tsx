@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import styles from "./charCount.module.scss";
-import Grid, { GridItem } from "@/components/layouts/grid";
 
 const CharCountPageInner = () => {
   const [text, setText] = useState("");

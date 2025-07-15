@@ -122,7 +122,7 @@ const SvgPageInner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.controller}>
-        <div rowGap="20px" columnGap="20px">
+        <div>
           <div>
             <label>Color</label>
           </div>
