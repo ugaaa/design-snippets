@@ -24,6 +24,8 @@ jobs:
             cd ~/design-snippets
 
             echo "📦 Updating code..."
+            git reset --hard HEAD
+            git clean -fd
             git pull origin main
 
             echo "📋 Installing dependencies..."
