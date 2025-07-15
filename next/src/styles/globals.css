@@ -31,50 +31,50 @@
   .home-header {
     @apply h-0;
   }
-  
+
   .home-header .header-bg {
     @apply -translate-y-full animate-show-down bg-color-yellow;
   }
-  
+
   .home-header.scrolled .header-bg {
     @apply translate-y-0;
   }
-  
+
   .scrolled .header-bg {
     @apply bg-color-yellow;
   }
-  
+
   .gnav {
     @apply absolute top-header-sm left-0 right-0 w-full bg-white border-b-10 border-color-yellow p-spacing-x;
     height: calc(100vh - var(--header-height));
   }
-  
+
   @media screen and (min-width: 780px) {
     .gnav {
       @apply static top-auto left-auto right-auto w-auto bg-transparent border-0 p-0 h-auto;
     }
   }
-  
+
   .gnav.open {
     @apply block;
   }
-  
+
   .nav-btn.open span:nth-child(1) {
     @apply top-3.5 rotate-[30deg];
   }
-  
+
   .nav-btn.open span:nth-child(2) {
     @apply bottom-3.5 rotate-[-30deg];
   }
-  
+
   .nav-btn.open span:nth-child(3) {
     @apply top-3.5 rotate-[-30deg];
   }
-  
+
   .tools-container.fadeIn {
     @apply opacity-100;
   }
-  
+
   .tools-container.fadeOut {
     @apply opacity-0;
   }
