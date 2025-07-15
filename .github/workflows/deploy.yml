@@ -22,15 +22,11 @@ jobs:
 
       # 3. 依存関係をインストール
       - name: Install dependencies
-        run: |
-          cd next
-          npm install
+        run: npm install
 
       # 4. ビルドを実行
       - name: Build project
-        run: |
-          cd next
-          npm run build
+        run: npm run build
 
       # 5. サーバーにSSHで接続してデプロイ
       - name: Deploy to Server
@@ -41,6 +37,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/design-snippets
+            git stash
             git pull origin main
-            sudo docker-compose build --no-cache
-            sudo docker-compose up -d
+            git stash pop || true
+            npm install
+            npm run build
+            pm2 restart design-snippets || pm2 start "npm start" --name 'design-snippets'

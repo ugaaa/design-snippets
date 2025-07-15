@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./charCount.module.scss";
+import Grid, { GridItem } from "@/components/layouts/grid";
 
 const CharCountPageInner = () => {
   const [text, setText] = useState("");
@@ -29,21 +31,20 @@ const CharCountPageInner = () => {
         </p>
       </article>
 
-      <div>
+      <div className="">
         <div>
           <textarea
+            className={styles.textarea}
             value={text}
             onChange={handleChange}
             placeholder="ここにテキストを入力してください"
           />
         </div>
-        <div>
-          <div className="">
-            <p className="">文字数:</p>
-            <p className="">{charCount}</p>
-            <p className="">改行・空白なし文字数:</p>
-            <p className="">{charCountNoSpaces}</p>
-          </div>
+        <div className={styles.charCountContainer}>
+          <p className={styles.charCountLabel}>文字数:</p>
+          <p className={styles.charCount}>{charCount}</p>
+          <p className={styles.charCountLabel}>改行・空白なし文字数:</p>
+          <p className={styles.charCount}>{charCountNoSpaces}</p>
         </div>
       </div>
     </div>

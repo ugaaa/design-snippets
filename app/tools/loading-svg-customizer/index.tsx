@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styles from "./loadingSvgCustomizer.module.scss";
-import Grid, { GridItem } from "@/components/layouts/grid";
 
 export const svgs = [
   {
@@ -123,12 +122,12 @@ const SvgPageInner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.controller}>
-        <Grid rowGap="20px" columnGap="20px">
-          <GridItem span={5} spanSp={6}>
+        <div rowGap="20px" columnGap="20px">
+          <div>
             <label>Color</label>
-          </GridItem>
+          </div>
 
-          <GridItem span={7} spanSp={6}>
+          <div>
             <input
               type="color"
               value={color}
@@ -139,12 +138,12 @@ const SvgPageInner = () => {
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
-          </GridItem>
+          </div>
 
-          <GridItem span={5} spanSp={6}>
+          <div>
             <label>Background</label>
-          </GridItem>
-          <GridItem span={7} spanSp={6}>
+          </div>
+          <div>
             <input
               type="color"
               value={background}
@@ -155,12 +154,12 @@ const SvgPageInner = () => {
               value={background}
               onChange={(e) => setBackground(e.target.value)}
             />
-          </GridItem>
+          </div>
 
-          <GridItem span={5} spanSp={6}>
+          <div>
             <label>Speed (seconds)</label>
-          </GridItem>
-          <GridItem span={7} spanSp={6}>
+          </div>
+          <div>
             <input
               type="range"
               min="0.1"
@@ -174,12 +173,12 @@ const SvgPageInner = () => {
               }}
               onChange={(e) => setSpeed(Number(e.target.value))}
             />
-          </GridItem>
+          </div>
 
-          <GridItem span={5} spanSp={6}>
+          <div>
             <label>Size (px)</label>
-          </GridItem>
-          <GridItem span={7} spanSp={6}>
+          </div>
+          <div>
             <input
               type="range"
               min="1"
@@ -193,8 +192,8 @@ const SvgPageInner = () => {
               }}
               onChange={(e) => setSize(Number(e.target.value))}
             />
-          </GridItem>
-        </Grid>
+          </div>
+        </div>
         <CopyToClipboard text={customizedSvg}>
           <button>Copy SVG</button>
         </CopyToClipboard>
