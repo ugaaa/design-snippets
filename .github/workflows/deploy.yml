@@ -11,32 +11,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. コードをチェックアウト
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # 2. Node.js環境を設定してビルド
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      # 3. 依存関係をインストール
-      - name: Install dependencies
-        run: npm install
-
-      # 4. ビルドを実行
-      - name: Build project
-        run: npm run build
-
-      # 5. サーバーにSSHで接続してデプロイ
       - name: Deploy to Server
-        uses: appleboy/scp-action@v0.1.7
+        uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "out/*"
-          target: "/var/www/html/"
-          strip_components: 1
-          rm: true
+          command_timeout: 10m
+          script: |
+            set -e
+            echo "🚀 Starting deployment..."
+            cd ~/design-snippets
+
+            echo "📦 Updating code..."
+            git reset --hard HEAD
+            git clean -fd
+            git pull origin main
+
+            echo "📋 Installing dependencies..."
+            npm install
+
+            echo "🔨 Building application..."
+            npm run build
+
+            echo "📁 Checking output directory..."
+            ls -la out/ || { echo "❌ out directory not found"; exit 1; }
+
+            echo "📋 Copying files..."
+            rm -rf /var/www/html/*
+            cp -r out/* /var/www/html/
+
+            echo "✅ Deployment completed successfully!"
