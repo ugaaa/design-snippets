@@ -68,8 +68,18 @@ const AspectRatioCalculatorInner = () => {
 
     const ratio = w / h;
     const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
-    const denominator = 1000; // 精度のため
-    const numerator = Math.round(ratio * denominator);
+    let numerator: number, denominator: number;
+
+    if (Number.isInteger(w) && Number.isInteger(h)) {
+      // 整数同士の場合は直接約分
+      numerator = w;
+      denominator = h;
+    } else {
+      // 小数を含む場合は精度のため1000倍
+      const precision = 1000;
+      numerator = Math.round(ratio * precision);
+      denominator = precision;
+    }
     const divisor = gcd(numerator, denominator);
 
     return {
