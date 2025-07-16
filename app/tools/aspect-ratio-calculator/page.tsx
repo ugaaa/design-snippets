@@ -5,40 +5,62 @@ import Title from "@/components/common/title";
 import { useState } from "react";
 
 const AspectRatioCalculatorPage = () => {
-  const [mode, setMode] = useState<"width" | "height">("width");
   const [width, setWidth] = useState<string>("");
   const [height, setHeight] = useState<string>("");
 
   // アスペクト比の定義
   const aspectRatios = [
-    { name: "1:2", ratio: 1 / 2 },
-    { name: "2:3", ratio: 2 / 3 },
-    { name: "3:4", ratio: 3 / 4 },
-    { name: "4:3", ratio: 4 / 3 },
-    { name: "16:9", ratio: 16 / 9 },
-    { name: "黄金比", ratio: 1.618 },
-    { name: "白銀比", ratio: 1.414 },
+    {
+      name: "1:2",
+      ratio: 1 / 2,
+      className: { w: "aspect-[1/2]", h: "aspect-[2/1]" },
+    },
+    {
+      name: "2:3",
+      ratio: 2 / 3,
+      className: { w: "aspect-[2/3]", h: "aspect-[3/2]" },
+    },
+    {
+      name: "3:4",
+      ratio: 3 / 4,
+      className: { w: "aspect-[3/4]", h: "aspect-[4/3]" },
+    },
+    {
+      name: "9:16",
+      ratio: 9 / 16,
+      className: { w: "aspect-[9/16]", h: "aspect-[16/9]" },
+    },
+    {
+      name: "黄金比",
+      ratio: 1.618,
+      className: { w: "aspect-[1000/1618]", h: "aspect-[1618/1000]" },
+    },
+    {
+      name: "白銀比",
+      ratio: 1.414,
+      className: { w: "aspect-[1000/1414]", h: "aspect-[1414/1000]" },
+    },
   ];
 
   // 入力値から計算された高さ
   const calculateHeights = () => {
     const w = parseFloat(width);
-    if (isNaN(w) || w <= 0) return [];
 
     return aspectRatios.map((ar) => ({
       name: ar.name,
-      value: Math.round(w / ar.ratio),
+      value: isNaN(w) || w <= 0 ? 0 : Math.round(w / ar.ratio),
+      className: ar.className.h,
     }));
   };
 
   // 入力値から計算された幅
   const calculateWidths = () => {
     const h = parseFloat(height);
-    if (isNaN(h) || h <= 0) return [];
 
     return aspectRatios.map((ar) => ({
       name: ar.name,
-      value: Math.round(h * ar.ratio),
+      value: isNaN(h) || h <= 0 ? 0 : Math.round(h * ar.ratio),
+      className: ar.className.w,
     }));
   };
 
@@ -56,7 +78,7 @@ const AspectRatioCalculatorPage = () => {
 
     return {
       decimal: ratio.toFixed(3),
-      simplified: `${numerator / divisor}:${denominator / divisor}`,
+      simplified: `${numerator / divisor} / ${denominator / divisor}`,
     };
   };
 
@@ -72,101 +94,110 @@ const AspectRatioCalculatorPage = () => {
         アスペクト比計算
       </Title>
 
-      <div className="space-y-6">
-        {/* モード選択 */}
+      <div className="flex flex-col gap-10 w-full bg-white p-6 md:p-10 rounded-3xl">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {/* 入力フィールド */}
+          <div className="grid grid-cols-[auto_1fr] items-center gap-2.5">
+            <div className="flex items-center gap-2">
+              <span className="block w-1 h-8 bg-pink" />
+              <label className="text-sm font-medium">幅</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                value={width}
+                onChange={(e) => setWidth(e.target.value)}
+                className="p-2 border rounded-xl focus:outline-pink"
+                placeholder="例）1920"
+              />
+              <span>px</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="block w-1 h-8 bg-orange" />
+              <label className="text-sm font-medium">高さ</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                className="p-2 border rounded-xl focus:outline-orange"
+                placeholder="例）1080"
+              />
+              <span>px</span>
+            </div>
+          </div>
+
+          {/* アスペクト比の選択 */}
+          {width && height && getCurrentRatio() && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">現在のアスペクト比</h3>
+              <div className="bg-blue-100 rounded">
+                <div className="text-xl font-bold">
+                  {getCurrentRatio()?.simplified}
+                </div>
+                <div className="text-gray-600">
+                  小数: {getCurrentRatio()?.decimal}
+                </div>
+                <div className="text-gray-600">
+                  CSS: {`aspect-ratio: ${getCurrentRatio()?.simplified};`}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <hr />
+
         <div>
-          <label className="block text-sm font-medium mb-2">計算モード</label>
-          <div className="flex gap-4">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="width"
-                checked={mode === "width"}
-                onChange={(e) => setMode(e.target.value as "width")}
-                className="mr-2"
-              />
-              幅から高さを計算
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="height"
-                checked={mode === "height"}
-                onChange={(e) => setMode(e.target.value as "height")}
-                className="mr-2"
-              />
-              高さから幅を計算
-            </label>
+          <h3 className="text-lg font-semibold mb-4">計算結果（高さ）</h3>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
+            {calculateHeights().map((result, index) => (
+              <div
+                key={index}
+                className={`${result.className} p-3 bg-pink text-white rounded-xl`}
+              >
+                <div className="font-medium">{result.name}</div>
+
+                <div className="flex text-center gap-2 text-xs">
+                  <span>幅:</span>
+                  <span>{width || 0}px</span>
+                </div>
+                <div className="flex text-center gap-2 text-xs">
+                  <span>高さ:</span>
+                  <span>
+                    <span className="font-bold">{result.value}</span>px
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* 入力フィールド */}
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium mb-2">幅 (px)</label>
-            <input
-              type="number"
-              value={width}
-              onChange={(e) => setWidth(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="例: 1920"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-2">高さ (px)</label>
-            <input
-              type="number"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-              placeholder="例: 1080"
-            />
+        <div>
+          <h3 className="text-lg font-semibold mb-3">計算結果（幅）</h3>
+          <div className="grid grid-cols-3 gap-4 md:grid-cols-6">
+            {calculateWidths().map((result, index) => (
+              <div
+                key={index}
+                className={`${result.className} p-3 bg-orange text-white rounded-xl`}
+              >
+                <div className="font-medium">{result.name}</div>
+
+                <div className="flex text-center gap-2 text-xs">
+                  <span>高さ:</span>
+                  <span>{height || 0}px</span>
+                </div>
+                <div className="flex text-center gap-2 text-xs">
+                  <span>幅:</span>
+                  <span>
+                    <span className="font-bold">{result.value}</span>px
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* 結果表示 */}
-        {mode === "width" && width && (
-          <div>
-            <h3 className="text-lg font-semibold mb-3">計算結果（高さ）</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {calculateHeights().map((result, index) => (
-                <div key={index} className="p-3 bg-gray-100 rounded">
-                  <div className="font-medium">{result.name}</div>
-                  <div className="text-lg">{result.value}px</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {mode === "height" && height && (
-          <div>
-            <h3 className="text-lg font-semibold mb-3">計算結果（幅）</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {calculateWidths().map((result, index) => (
-                <div key={index} className="p-3 bg-gray-100 rounded">
-                  <div className="font-medium">{result.name}</div>
-                  <div className="text-lg">{result.value}px</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* 現在のアスペクト比 */}
-        {width && height && getCurrentRatio() && (
-          <div>
-            <h3 className="text-lg font-semibold mb-3">現在のアスペクト比</h3>
-            <div className="p-4 bg-blue-100 rounded">
-              <div className="text-xl font-bold">
-                {getCurrentRatio()?.simplified}
-              </div>
-              <div className="text-gray-600">
-                小数: {getCurrentRatio()?.decimal}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </Container>
   );

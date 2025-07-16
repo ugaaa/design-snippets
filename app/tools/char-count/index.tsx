@@ -1,14 +1,11 @@
-"use client";
-
 import { useState } from "react";
-import styles from "./charCount.module.scss";
 
 const CharCountPageInner = () => {
   const [text, setText] = useState("");
   const [charCount, setCharCount] = useState(0);
   const [charCountNoSpaces, setCharCountNoSpaces] = useState(0);
 
-  const handleChange = (e: { target: { value: any } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputText = e.target.value;
     setText(inputText);
     setCharCount(inputText.length);
@@ -16,35 +13,38 @@ const CharCountPageInner = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <article className={styles.text}>
-        <p>入力したテキストの文字数を簡単にカウントできるよ。</p>
+    <div className="w-full bg-white grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[auto_1fr] p-6 gap-8 md:gap-10 md:p-16 rounded-3xl shadow-md">
+      <article className="order-3 text-sm leading-loose md:order-1">
         <p>
-          空白や改行を含む総文字数と、空白や改行を除いた純文字数の両方が表示されます。
-        </p>
-        <p>
-          ライティングやコードの最適化など、さまざまな用途にお役立てください！
-        </p>
-        <p>
-          AIと違って入力されたデータはどこにも保存していないので安心して使ってね。
+          テキストを入力すると、リアルタイムで文字数をカウントできます。
+          <br />
+          総文字数と、空白や改行を除いた文字数の両方を表示します。
+          <br />
+          文章作成やSNS投稿、原稿チェックなど、幅広いシーンでご活用ください。
+          <br />
+          入力内容は保存されませんので、安心してご利用いただけます。
         </p>
       </article>
 
-      <div className="">
-        <div>
-          <textarea
-            className={styles.textarea}
-            value={text}
-            onChange={handleChange}
-            placeholder="ここにテキストを入力してください"
-          />
+      <hr className="order-2 md:hidden" />
+
+      <div className="order-1 md:order-2">
+        <div className="mb-4">
+          <p className="text-xs">
+            <span>文字数 :</span>
+            <span className="text-2xl font-bold ml-2">{charCount}</span>
+          </p>
+          <p className="text-xs leading-loose">
+            <span>改行・空白なし文字数 :</span>
+            <span className="text-2xl font-bold ml-2">{charCountNoSpaces}</span>
+          </p>
         </div>
-        <div className={styles.charCountContainer}>
-          <p className={styles.charCountLabel}>文字数:</p>
-          <p className={styles.charCount}>{charCount}</p>
-          <p className={styles.charCountLabel}>改行・空白なし文字数:</p>
-          <p className={styles.charCount}>{charCountNoSpaces}</p>
-        </div>
+        <textarea
+          className="w-full h-48 p-4 border rounded-3xl focus:outline-pink"
+          value={text}
+          onChange={handleChange}
+          placeholder="ここにテキストを入力してください"
+        />
       </div>
     </div>
   );

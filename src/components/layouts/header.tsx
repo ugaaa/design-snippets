@@ -76,13 +76,15 @@ const Header = () => {
   return (
     <header
       ref={ref}
-      className={`${isVisible ? "visible h-header-sm md:h-header-lg " : ""} ${
-        pathname === "/" ? "h-0" : ""
+      className={`${isVisible ? "visible " : ""} ${
+        pathname === "/" ? "h-0" : "h-header-sm md:h-header-lg"
       }`}
     >
       <div
         className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${
-          isScrolled || pathname === "/" ? "bg-yellow" : ""
+          isScrolled || pathname === "/" || isMenuOpen || isChildMenuOpen
+            ? "bg-yellow"
+            : ""
         } ${
           pathname === "/"
             ? `-translate-y-full animate-show-down ${
