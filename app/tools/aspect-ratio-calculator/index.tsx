@@ -9,33 +9,29 @@ const AspectRatioCalculatorInner = () => {
   // アスペクト比の定義
   const aspectRatios = [
     {
-      name: "1:2",
-      ratio: 1 / 2,
+      ratio: [1, 2],
       className: { w: "aspect-[1/2]", h: "aspect-[2/1]" },
     },
     {
-      name: "2:3",
-      ratio: 2 / 3,
+      ratio: [2, 3],
       className: { w: "aspect-[2/3]", h: "aspect-[3/2]" },
     },
     {
-      name: "3:4",
-      ratio: 3 / 4,
+      ratio: [3, 4],
       className: { w: "aspect-[3/4]", h: "aspect-[4/3]" },
     },
     {
-      name: "9:16",
-      ratio: 9 / 16,
+      ratio: [9, 16],
       className: { w: "aspect-[9/16]", h: "aspect-[16/9]" },
     },
     {
       name: "黄金比",
-      ratio: 1.618,
+      ratio: [1, 1.618],
       className: { w: "aspect-[1000/1618]", h: "aspect-[1618/1000]" },
     },
     {
       name: "白銀比",
-      ratio: 1.414,
+      ratio: [1, 1.414],
       className: { w: "aspect-[1000/1414]", h: "aspect-[1414/1000]" },
     },
   ];
@@ -45,8 +41,9 @@ const AspectRatioCalculatorInner = () => {
     const w = parseFloat(width);
 
     return aspectRatios.map((ar) => ({
-      name: ar.name,
-      value: isNaN(w) || w <= 0 ? 0 : Math.round(w / ar.ratio),
+      name: ar.name || `${ar.ratio[1]} / ${ar.ratio[0]}`,
+      value:
+        isNaN(w) || w <= 0 ? 0 : Math.round(w / (ar.ratio[1] / ar.ratio[0])),
       className: ar.className.h,
     }));
   };
@@ -56,8 +53,9 @@ const AspectRatioCalculatorInner = () => {
     const h = parseFloat(height);
 
     return aspectRatios.map((ar) => ({
-      name: ar.name,
-      value: isNaN(h) || h <= 0 ? 0 : Math.round(h * ar.ratio),
+      name: ar.name || `${ar.ratio[0]} / ${ar.ratio[1]}`,
+      value:
+        isNaN(h) || h <= 0 ? 0 : Math.round(h * (ar.ratio[0] / ar.ratio[1])),
       className: ar.className.w,
     }));
   };
@@ -144,16 +142,16 @@ const AspectRatioCalculatorInner = () => {
               key={index}
               className={`${result.className} p-3 bg-pink text-white rounded-xl`}
             >
-              <div className="font-medium">{result.name}</div>
+              <div className="font-medium mb-4">{result.name}</div>
 
-              <div className="flex text-center gap-2 text-xs">
+              <div className="flex items-center gap-2 text-xs">
                 <span>幅:</span>
                 <span>{width || 0}px</span>
               </div>
-              <div className="flex text-center gap-2 text-xs">
+              <div className="flex items-center gap-2 text-xs">
                 <span>高さ:</span>
                 <span>
-                  <span className="font-bold">{result.value}</span>px
+                  <span className="font-bold md:text-lg">{result.value}</span>px
                 </span>
               </div>
             </div>
@@ -163,22 +161,22 @@ const AspectRatioCalculatorInner = () => {
 
       <div>
         <h3 className="text-lg font-semibold mb-3">計算結果（幅）</h3>
-        <div className="grid grid-cols-3 gap-4 md:grid-cols-6">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
           {calculateWidths().map((result, index) => (
             <div
               key={index}
               className={`${result.className} p-3 bg-orange text-white rounded-xl`}
             >
-              <div className="font-medium">{result.name}</div>
+              <div className="font-medium mb-4">{result.name}</div>
 
-              <div className="flex text-center gap-2 text-xs">
+              <div className="flex items-center gap-2 text-xs">
                 <span>高さ:</span>
                 <span>{height || 0}px</span>
               </div>
-              <div className="flex text-center gap-2 text-xs">
+              <div className="flex items-center gap-2 text-xs">
                 <span>幅:</span>
                 <span>
-                  <span className="font-bold">{result.value}</span>px
+                  <span className="font-bold md:text-lg">{result.value}</span>px
                 </span>
               </div>
             </div>
