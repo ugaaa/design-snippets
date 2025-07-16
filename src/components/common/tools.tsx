@@ -16,7 +16,7 @@ const Tools = ({
   const { isSP } = useResize();
   const Component = isSP && isSmall ? Link : LargeButton;
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
       <div>
         <Component href={"/tools/loading-svg-customizer"} onClick={onClick}>
           <div className={`${styles.button} ${isSmall ? styles.isSmall : ""}`}>
