@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_IMAGE_URL}/og-image.png`,
+        url: `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/common/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Design SnippetsのOG画像",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Design Snippets | Webデザイン・UI/UX・フロントエンド開発のための便利ツール集",
     description:
       "WebデザインやUI/UX、フロントエンド開発に役立つデザインスニペット・コード例・便利ツールを多数掲載。",
-    images: [`${process.env.NEXT_PUBLIC_IMAGE_URL}/og-image.png`],
+    images: [`${process.env.NEXT_PUBLIC_IMAGE_URL}/images/common/og-image.png`],
   },
 };
 
