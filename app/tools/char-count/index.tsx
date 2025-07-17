@@ -15,7 +15,7 @@ const CharCountPageInner = () => {
   };
 
   return (
-    <div className="w-full bg-white grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[auto_1fr] p-6 gap-8 md:gap-10 md:p-16 rounded-3xl shadow-md">
+    <div className="w-full bg-white grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[auto_1fr] p-6 gap-8 md:gap-10 md:p-16 rounded-3xl shadow-lg">
       <article className="order-3 text-sm leading-loose md:order-1">
         <p>
           テキストを入力すると、リアルタイムで文字数をカウントできます。
@@ -42,7 +42,7 @@ const CharCountPageInner = () => {
           </p>
         </div>
         <textarea
-          className="w-full h-48 p-4 border rounded-3xl focus:outline-pink"
+          className="w-full min-h-48 p-4 border rounded-xl focus:outline-pink"
           value={text}
           onChange={handleChange}
           placeholder="ここにテキストを入力してください"

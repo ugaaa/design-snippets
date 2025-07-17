@@ -89,8 +89,8 @@ const AspectRatioCalculatorInner = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 w-full bg-white p-6 md:p-10 rounded-3xl">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div className="flex flex-col gap-10 w-full bg-white p-6 md:p-10 rounded-3xl shadow-lg">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
         {/* 入力フィールド */}
         <div className="grid grid-cols-[auto_1fr] items-center gap-2.5">
           <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ const AspectRatioCalculatorInner = () => {
               type="number"
               value={width}
               onChange={(e) => setWidth(e.target.value)}
-              className="p-2 border rounded-xl focus:outline-pink"
+              className="p-2 w-32 border rounded-lg focus:outline-pink"
               placeholder="例）1920"
             />
             <span>px</span>
@@ -116,7 +116,7 @@ const AspectRatioCalculatorInner = () => {
               type="number"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              className="p-2 border rounded-xl focus:outline-orange"
+              className="p-2 w-32 border rounded-lg focus:outline-orange"
               placeholder="例）1080"
             />
             <span>px</span>
