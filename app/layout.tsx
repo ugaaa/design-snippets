@@ -4,6 +4,8 @@ import "../src/styles/globals.css";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import Script from "next/script";
+import { ReactNode } from "react";
+import { headers } from "next/headers";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
@@ -55,11 +57,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <Script
@@ -74,13 +72,13 @@ export default function RootLayout({
            window.dataLayer = window.dataLayer || [];
            function gtag(){dataLayer.push(arguments);}
            gtag('js', new Date());
- 
+
            gtag('config', '${GA_ID}');
            `,
         }}
       />
-      <body className={notoSansJP.className}>
-        <div className="relative w-full overflow-hidden">
+      <body className={` ${notoSansJP.className}`}>
+        <div className="relative w-full">
           <Header />
           <main>{children}</main>
           <Footer />

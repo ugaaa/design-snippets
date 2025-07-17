@@ -45,7 +45,7 @@ const CharCountPage = () => {
       }}
       hasTitle
     >
-      <Title as={"h1"} ball={{ main: "green", sub: "yellow" }} isWhite>
+      <Title as={"h1"} isWhite>
         文字数カウントツール
       </Title>
 

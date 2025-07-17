@@ -16,7 +16,7 @@ export const useResize = (
 
   const handleResize = useCallback(() => {
     const windowWidth = window.innerWidth;
-    setIsPC(windowWidth >= 780); // Assuming 780px is the breakpoint between PC and SP
+    setIsPC(windowWidth >= 780); // Assuming 768px is the breakpoint between PC and SP
     if (onResize) {
       onResize();
     }

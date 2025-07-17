@@ -1,3 +1,3 @@
 export const sizes = {
-  breakPoint: 780,
+  breakPoint: 768,
 };

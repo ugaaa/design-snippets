@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { useResize } from "@/hooks/useResize";
 
@@ -78,7 +80,7 @@ const MovingBouncingBalls: React.FC = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      const baseWidth = canvas.width > 780 ? 1920 : 780; // スマホとPCでベースサイズ変更
+      const baseWidth = canvas.width > 768 ? 1920 : 768; // スマホとPCでベースサイズ変更
       const widthFactor = canvas.width / baseWidth; // 基準となる幅
 
       const sizes = [200, 100, 100, 50, 25].map((size) => size * widthFactor);

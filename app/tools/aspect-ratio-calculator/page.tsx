@@ -45,7 +45,7 @@ const AspectRatioCalculatorPage = () => {
       }}
       hasTitle
     >
-      <Title as={"h1"} ball={{ main: "green", sub: "yellow" }} isWhite>
+      <Title as={"h1"} isWhite>
         アスペクト比計算
       </Title>
 

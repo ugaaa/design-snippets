@@ -17,7 +17,7 @@ const Title = <T extends React.ElementType = "div">({
   as,
   ball = {
     main: "pink",
-    sub: "yellow",
+    sub: "blue",
   },
   isWhite,
   children,
@@ -25,7 +25,11 @@ const Title = <T extends React.ElementType = "div">({
   const Component = as || "div";
 
   return (
-    <Component className={`${styles.title} ${isWhite ? styles.isWhite : ""}`}>
+    <Component
+      className={`mb-6 md:mb-10 ${styles.title} ${
+        isWhite ? styles.isWhite : ""
+      }`}
+    >
       <span className={styles.balls}>
         <span className={`${styles.ball} ${styles.main} bg-${ball.main}`} />
         <span className={`${styles.ball} ${styles.sub} bg-${ball.sub}`} />

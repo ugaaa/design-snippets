@@ -14,7 +14,7 @@ const ToolsFooter = () => {
         }}
         hasTitle
       >
-        <Title as={"h2"} ball={{ main: "green", sub: "yellow" }} isWhite>
+        <Title as={"h2"} isWhite>
           便利なツール
         </Title>
         <Tools />

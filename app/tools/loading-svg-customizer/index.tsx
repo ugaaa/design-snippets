@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styles from "./loadingSvgCustomizer.module.scss";
+import MovingBouncingBalls from "@/components/snippets/movingBouncingBalls";
 
 export const svgs = [
   {
@@ -101,8 +102,8 @@ const SvgPageInner = () => {
   const [color, setColor] = useState("#000");
   const [background, setBackground] = useState("none");
   const [opacity, setOpacity] = useState(1);
-  const [speed, setSpeed] = useState(2);
-  const [size, setSize] = useState(5);
+  const [speed, setSpeed] = useState(3);
+  const [size, setSize] = useState(32);
   const [selectedSvgIndex, setSelectedSvgIndex] = useState(0);
 
   console.log(color, background, speed, speed);
@@ -120,118 +121,128 @@ const SvgPageInner = () => {
   const customizedSvg = customizeSvg(svgs[selectedSvgIndex].svg);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.controller}>
+    <>
+      <div className="fixed top-0 left-0 w-full h-full mix-blend-multiply">
+        <MovingBouncingBalls />
+      </div>
+      <div className="relative w-full grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8">
         <div>
-          <div>
-            <label>Color</label>
-          </div>
+          <div className="bg-white rounded-3xl shadow-lg sticky top-[calc(var(--header-height)+2rem)] p-6 md:p-10">
+            <div>
+              <div>
+                <label>Color</label>
+              </div>
 
-          <div>
-            <input
-              type="color"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-            />
-            <input
-              type="text"
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-            />
-          </div>
+              <div>
+                <input
+                  type="color"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                />
+                <input
+                  type="text"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                />
+              </div>
 
-          <div>
-            <label>Background</label>
-          </div>
-          <div>
-            <input
-              type="color"
-              value={background}
-              onChange={(e) => setBackground(e.target.value)}
-            />
-            <input
-              type="text"
-              value={background}
-              onChange={(e) => setBackground(e.target.value)}
-            />
-          </div>
+              <div>
+                <label>Background</label>
+              </div>
+              <div>
+                <input
+                  type="color"
+                  value={background}
+                  onChange={(e) => setBackground(e.target.value)}
+                />
+                <input
+                  type="text"
+                  value={background}
+                  onChange={(e) => setBackground(e.target.value)}
+                />
+              </div>
 
-          <div>
-            <label>Speed (seconds)</label>
-          </div>
-          <div>
-            <input
-              type="range"
-              min="0.1"
-              max="20"
-              step="0.1"
-              value={speed}
-              style={{
-                background: `linear-gradient(to right, var(--color-pink) 0%, var(--color-pink) ${
-                  (speed / 20) * 100
-                }%, #ddd ${(speed / 20) * 100}%, #ddd 100%)`,
-              }}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-            />
-          </div>
+              <div>
+                <label>Speed (seconds)</label>
+              </div>
+              <div>
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  step="1"
+                  value={speed}
+                  style={{
+                    background: `linear-gradient(to right, var(--color-pink) 0%, var(--color-pink) ${
+                      (speed / 20) * 100
+                    }%, #ddd ${(speed / 20) * 100}%, #ddd 100%)`,
+                  }}
+                  onChange={(e) => setSpeed(Number(e.target.value))}
+                />
+              </div>
 
-          <div>
-            <label>Size (px)</label>
-          </div>
-          <div>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              step="1"
-              value={size}
-              style={{
-                background: `linear-gradient(to right, var(--color-pink) 0%, var(--color-pink) ${
-                  size * 10
-                }%, #ddd ${size * 10}%, #ddd 100%)`,
-              }}
-              onChange={(e) => setSize(Number(e.target.value))}
-            />
+              <div>
+                <label>Size (px)</label>
+              </div>
+              <div>
+                <input
+                  type="range"
+                  min="32"
+                  max="128"
+                  step="1"
+                  value={size}
+                  style={{
+                    background: `linear-gradient(to right, var(--color-pink) 0%, var(--color-pink) ${
+                      size * 10
+                    }%, #ddd ${size * 10}%, #ddd 100%)`,
+                  }}
+                  onChange={(e) => setSize(Number(e.target.value))}
+                />
+              </div>
+            </div>
+            <CopyToClipboard text={customizedSvg}>
+              <button>Copy SVG</button>
+            </CopyToClipboard>
+            <a
+              href={`data:image/svg+xml;utf8,${encodeURIComponent(
+                customizedSvg
+              )}`}
+              download="loader.svg"
+            >
+              <button>Download SVG</button>
+            </a>
           </div>
         </div>
-        <CopyToClipboard text={customizedSvg}>
-          <button>Copy SVG</button>
-        </CopyToClipboard>
-        <a
-          href={`data:image/svg+xml;utf8,${encodeURIComponent(customizedSvg)}`}
-          download="loader.svg"
-        >
-          <button>Download SVG</button>
-        </a>
-      </div>
 
-      <div className={styles.icons}>
-        {svgs.map((svg, index) => (
-          <div className={styles.icon} key={index}>
-            <input
-              type="radio"
-              name="svg"
-              value={index}
-              checked={selectedSvgIndex === index}
-              onChange={() => setSelectedSvgIndex(index)}
-            />
-            <label>
-              {svg.name}
-              <div
-                style={{
-                  // width: `${size}px`,
-                  // height: `${size}px`,
-                  width: "50px",
-                  height: "50px",
-                  opacity: opacity,
-                }}
-                dangerouslySetInnerHTML={{ __html: customizeSvg(svg.svg) }}
-              />
-            </label>
-          </div>
-        ))}
+        <div className="grid grid-cols-2 lg:md:grid-cols-3 xl:grid-cols-4 gap-6">
+          {svgs.map((svg, index) => (
+            <div key={index}>
+              <label className="flex flex-col items-center justify-center gap-4 bg-white rounded-3xl shadow-lg p-4 md:p-8 border-4 border-white cursor-pointer hover:opacity-90 has-[:checked]:border-pink has-[:checked]:hover:opacity-100">
+                <input
+                  type="radio"
+                  name="svg"
+                  value={index}
+                  checked={selectedSvgIndex === index}
+                  onChange={() => setSelectedSvgIndex(index)}
+                  className="hidden"
+                />
+                {svg.name}
+                <div
+                  style={{
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    // width: "50px",
+                    // height: "50px",
+                    opacity: opacity,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: customizeSvg(svg.svg) }}
+                />
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

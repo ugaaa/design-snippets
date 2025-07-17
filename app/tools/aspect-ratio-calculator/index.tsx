@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import MovingBouncingBalls from "@/components/snippets/movingBouncingBalls";
 
 const AspectRatioCalculatorInner = () => {
   const [width, setWidth] = useState<string>("");
@@ -89,111 +90,118 @@ const AspectRatioCalculatorInner = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 w-full bg-white p-6 md:p-10 rounded-3xl shadow-lg">
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-        {/* 入力フィールド */}
-        <div className="grid grid-cols-[auto_1fr] items-center gap-2.5">
-          <div className="flex items-center gap-2">
-            <span className="block w-1 h-8 bg-pink" />
-            <label className="text-sm font-medium">幅</label>
+    <>
+      <div className="fixed top-0 left-0 w-full h-full mix-blend-multiply">
+        <MovingBouncingBalls />
+      </div>
+      <div className="relative flex flex-col gap-10 w-full bg-white p-6 md:p-10 rounded-3xl shadow-lg">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+          {/* 入力フィールド */}
+          <div className="grid grid-cols-[auto_1fr] items-center gap-2.5">
+            <div className="flex items-center gap-2">
+              <span className="block w-1 h-8 bg-pink" />
+              <label className="text-sm font-medium">幅</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                value={width}
+                onChange={(e) => setWidth(e.target.value)}
+                className="p-2 w-32 border rounded-lg focus:outline-pink"
+                placeholder="例）1920"
+              />
+              <span>px</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="block w-1 h-8 bg-orange" />
+              <label className="text-sm font-medium">高さ</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                className="p-2 w-32 border rounded-lg focus:outline-orange"
+                placeholder="例）1080"
+              />
+              <span>px</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              value={width}
-              onChange={(e) => setWidth(e.target.value)}
-              className="p-2 w-32 border rounded-lg focus:outline-pink"
-              placeholder="例）1920"
-            />
-            <span>px</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="block w-1 h-8 bg-orange" />
-            <label className="text-sm font-medium">高さ</label>
-          </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="number"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              className="p-2 w-32 border rounded-lg focus:outline-orange"
-              placeholder="例）1080"
-            />
-            <span>px</span>
+
+          {/* アスペクト比の選択 */}
+          {width && height && getCurrentRatio() && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">現在のアスペクト比</h3>
+              <div className="bg-blue-100 rounded">
+                <div className="text-xl font-bold">
+                  {getCurrentRatio()?.simplified}
+                </div>
+                <div className="text-gray-600">
+                  小数: {getCurrentRatio()?.decimal}
+                </div>
+                <div className="text-gray-600">
+                  CSS: {`aspect-ratio: ${getCurrentRatio()?.simplified};`}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <hr />
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">計算結果（高さ）</h3>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
+            {calculateHeights().map((result, index) => (
+              <div
+                key={index}
+                className={`${result.className} p-3 bg-pink text-white rounded-xl`}
+              >
+                <div className="font-medium mb-4">{result.name}</div>
+
+                <div className="flex items-center gap-2 text-xs">
+                  <span>幅:</span>
+                  <span>{width || 0}px</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span>高さ:</span>
+                  <span>
+                    <span className="font-bold md:text-lg">{result.value}</span>
+                    px
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* アスペクト比の選択 */}
-        {width && height && getCurrentRatio() && (
-          <div>
-            <h3 className="text-lg font-semibold mb-4">現在のアスペクト比</h3>
-            <div className="bg-blue-100 rounded">
-              <div className="text-xl font-bold">
-                {getCurrentRatio()?.simplified}
+        <div>
+          <h3 className="text-lg font-semibold mb-3">計算結果（幅）</h3>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
+            {calculateWidths().map((result, index) => (
+              <div
+                key={index}
+                className={`${result.className} p-3 bg-orange text-white rounded-xl`}
+              >
+                <div className="font-medium mb-4">{result.name}</div>
+
+                <div className="flex items-center gap-2 text-xs">
+                  <span>高さ:</span>
+                  <span>{height || 0}px</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span>幅:</span>
+                  <span>
+                    <span className="font-bold md:text-lg">{result.value}</span>
+                    px
+                  </span>
+                </div>
               </div>
-              <div className="text-gray-600">
-                小数: {getCurrentRatio()?.decimal}
-              </div>
-              <div className="text-gray-600">
-                CSS: {`aspect-ratio: ${getCurrentRatio()?.simplified};`}
-              </div>
-            </div>
+            ))}
           </div>
-        )}
-      </div>
-
-      <hr />
-
-      <div>
-        <h3 className="text-lg font-semibold mb-4">計算結果（高さ）</h3>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-          {calculateHeights().map((result, index) => (
-            <div
-              key={index}
-              className={`${result.className} p-3 bg-pink text-white rounded-xl`}
-            >
-              <div className="font-medium mb-4">{result.name}</div>
-
-              <div className="flex items-center gap-2 text-xs">
-                <span>幅:</span>
-                <span>{width || 0}px</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs">
-                <span>高さ:</span>
-                <span>
-                  <span className="font-bold md:text-lg">{result.value}</span>px
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-3">計算結果（幅）</h3>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-          {calculateWidths().map((result, index) => (
-            <div
-              key={index}
-              className={`${result.className} p-3 bg-orange text-white rounded-xl`}
-            >
-              <div className="font-medium mb-4">{result.name}</div>
-
-              <div className="flex items-center gap-2 text-xs">
-                <span>高さ:</span>
-                <span>{height || 0}px</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs">
-                <span>幅:</span>
-                <span>
-                  <span className="font-bold md:text-lg">{result.value}</span>px
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -13,7 +13,7 @@ const SvgPage = () => {
       }}
       hasTitle
     >
-      <Title as={"h1"} ball={{ main: "green", sub: "yellow" }} isWhite>
+      <Title as={"h1"} isWhite>
         Loading SVG カスタマイザー
       </Title>
 

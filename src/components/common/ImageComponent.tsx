@@ -34,7 +34,7 @@ const ImageComponent = ({
           src={src}
           alt={alt}
           style={{ objectFit, objectPosition, width: "100%", height: "100%" }}
-          sizes="(max-width:780px) 100vw, 1280px"
+          sizes="(max-width:768px) 100vw, 1280px"
         />
       ) : (
         <div
