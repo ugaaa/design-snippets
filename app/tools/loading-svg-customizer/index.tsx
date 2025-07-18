@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import styles from "./loadingSvgCustomizer.module.scss";
 import MovingBouncingBalls from "@/components/snippets/movingBouncingBalls";
 
 export const svgs = [
@@ -99,9 +98,8 @@ export const svgs = [
 ];
 
 const SvgPageInner = () => {
-  const [color, setColor] = useState("#000");
-  const [background, setBackground] = useState("none");
-  const [opacity, setOpacity] = useState(1);
+  const [color, setColor] = useState("#ff5722");
+  const [background, setBackground] = useState("#ffc107");
   const [speed, setSpeed] = useState(3);
   const [size, setSize] = useState(32);
   const [selectedSvgIndex, setSelectedSvgIndex] = useState(0);
@@ -233,8 +231,8 @@ const SvgPageInner = () => {
                     height: `${size}px`,
                     // width: "50px",
                     // height: "50px",
-                    opacity: opacity,
                   }}
+                  className="flex items-center justify-center"
                   dangerouslySetInnerHTML={{ __html: customizeSvg(svg.svg) }}
                 />
               </label>
