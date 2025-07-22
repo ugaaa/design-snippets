@@ -10,7 +10,7 @@ const Footer = () => (
   <footer className="relative">
     <Container disabledYPadding>
       <div className="max-w-3xl py-8 md:mx-auto md:py-16">
-        <div className="bg-white rounded-3xl p-8 shadow-lg grid grid-cols-1 gap-6 md:p-16 md:grid-cols-[auto_1fr] md:gap-10">
+        <div className="bg-white text-black rounded-3xl p-8 shadow-lg grid grid-cols-1 gap-6 md:p-16 md:grid-cols-[auto_1fr] md:gap-10">
           <div className="aspect-square bg-green rounded-3xl w-40 flex items-end justify-center mx-auto md:mx-0">
             <ImgUga />
           </div>
