@@ -6,7 +6,7 @@ import { Anonymous_Pro } from "next/font/google";
 import { useEffect, useState } from "react";
 
 const anonymousPro = Anonymous_Pro({ subsets: ["latin"], weight: ["400"] });
-const tagline = process.env.NEXT_PUBLIC_TAGLINE;
+const tagline = "The Code Behind Creativity.";
 
 const FirstView = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);

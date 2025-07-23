@@ -5,16 +5,15 @@ import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import Script from "next/script";
 import { ReactNode } from "react";
-import { headers } from "next/headers";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
+const description =
+  "WebデザインやUI/UX、フロントエンド開発に役立つデザインスニペット・コード例・便利ツールを多数掲載。React/Next.js対応、最新トレンドや実装テクニックも紹介。初心者からプロまで幅広く活用できるリソース集。";
 
 export const metadata: Metadata = {
-  title:
-    "Design Snippets | Webデザイン・UI/UX・フロントエンド開発のための便利ツール集",
-  description:
-    "WebデザインやUI/UX、フロントエンド開発に役立つデザインスニペット・コード例・便利ツールを多数掲載。React/Next.js対応、最新トレンドや実装テクニックも紹介。初心者からプロまで幅広く活用できるリソース集。",
+  title: `${process.env.NEXT_PUBLIC_SITE_NAME} | ${process.env.NEXT_PUBLIC_TAGLINE}`,
+  description,
   keywords: [
     "デザインスニペット",
     "Webデザイン",
@@ -29,18 +28,20 @@ export const metadata: Metadata = {
     "コード例",
     "開発リソース",
   ],
+  alternates: {
+    canonical:
+      process.env.NEXT_PUBLIC_SITE_URL || "https://design-snippets.com",
+  },
   openGraph: {
-    title:
-      "Design Snippets | Webデザイン・UI/UX・フロントエンド開発のための便利ツール集",
-    description:
-      "WebデザインやUI/UX、フロントエンド開発に役立つデザインスニペット・コード例・便利ツールを多数掲載。React/Next.js対応、最新トレンドや実装テクニックも紹介。",
-    url: process.env.NEXT_PUBLIC_IMAGE_URL,
-    siteName: "Design Snippets",
+    title: `${process.env.NEXT_PUBLIC_SITE_NAME} | ${process.env.NEXT_PUBLIC_TAGLINE}`,
+    description,
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    siteName: process.env.NEXT_PUBLIC_SITE_NAME,
     type: "website",
     locale: "ja_JP",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_IMAGE_URL}/images/common/og-image.png`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/images/common/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Design SnippetsのOG画像",
@@ -49,11 +50,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Design Snippets | Webデザイン・UI/UX・フロントエンド開発のための便利ツール集",
-    description:
-      "WebデザインやUI/UX、フロントエンド開発に役立つデザインスニペット・コード例・便利ツールを多数掲載。",
-    images: [`${process.env.NEXT_PUBLIC_IMAGE_URL}/images/common/og-image.png`],
+    title: `${process.env.NEXT_PUBLIC_SITE_NAME} | ${process.env.NEXT_PUBLIC_TAGLINE}`,
+    description,
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL}/images/common/og-image.png`],
   },
 };
 
